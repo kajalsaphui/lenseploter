@@ -1,0 +1,493 @@
+﻿'use strict';
+appOnlineOrder.factory("vrxOnlineOrderFactory", ['$http', '$q', 'customHeaderFactory', '$rootScope', function ($http, $q, customHeaderFactory, $rootScope) {
+    var urlBase = 'api/vrx/';
+    var urlRepoBase = 'repo/v1/vrx/';
+    //var urlRepoBase = 'http://localhost:8092/vrx/';
+    //var urlBase = 'http://localhost:8091/vrx/';
+    //var urlBase = 'http://localhost:53212/vrx/';
+    //var urlRepoBase = 'http://localhost:50273/vrx/';
+    var dataFactory = {}, urlPath = "";
+    var canceller = $q.defer();
+    var headerData = {
+        headers: { 'Authorization': 'Basic YW5keTpwYXNzd29yZA==' }
+    };
+    dataFactory.cancelall = function (returnvalue) {
+        canceller.resolve();
+        return returnvalue(true);
+    };
+    dataFactory.validateAuthenticateUser = function (credentials, returnvalue) {
+        credentials.username = credentials.userid;
+        //urlPath = urlBase + "userinfo/authenticateusercred/";
+        urlPath = urlBase + "userinfo/getuserauthentication/";
+        $http.post(urlPath, credentials).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getServerDateTime = function (returnvalue) {
+        urlPath = urlBase + "order/getserverdatetime/";
+        $http.get(urlPath).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getTintingDetail = function (returnvalue) {
+        urlPath = "template/tinting.json";
+        $http.get(urlPath).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getLatestOrderList = function (filterdata, returnvalue) {
+        urlPath = urlBase + "order/latestorders/";
+        $http.post(urlPath, filterdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getOrderStatus = function (filterdata, returnvalue) {
+        //urlPath = urlBase + "order/orderstatus/";
+        urlPath = urlBase + "order/getstatuswiseorders/";
+        $http.post(urlPath, filterdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getOrderList = function (customerid, ordertypeid, returnvalue) {
+        urlPath = urlBase + "order/orders/" + customerid + "/t/" + ordertypeid;
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            alert(err.status);
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getFilteredOrderList = function (filterdata, returnvalue) {
+        //urlPath = urlBase + "order/orderlist/";
+        urlPath = urlBase + "order/CustomerOrders/";
+        $http.post(urlPath, filterdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            alert(err.status);
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getOrderDetail = function (orderid, returnvalue) {
+        urlPath = urlBase + "order/orderdetail/" + orderid;
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.updateOrder = function (orderdata, returnvalue) {
+        urlPath = urlBase + "order/updateorder";
+        $http.put(urlPath, orderdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.saveOrder = function (orderdata, returnvalue) {
+        urlPath = urlBase + "order/saveorder";
+        $http.post(urlPath, orderdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getCustomerList = function (returnvalue) {
+        urlPath = urlBase + "customer/customers/";
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getCustomerDetail = function (customerid, returnvalue) {
+        urlPath = urlBase + "customer/customerdetail/" + customerid;
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getItemList = function (customerid, returnvalue) {
+        urlPath = urlBase + "item/items/" + customerid;
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getInvoiceList = function (filterdata, returnvalue) {
+        urlPath = urlBase + "invoice/getinvoicelist";
+        $http.post(urlPath, filterdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+
+    };
+    dataFactory.getPaymentList = function (filterdata, returnvalue) {
+        urlPath = urlBase + "invoice/getpaymentlist";
+        $http.post(urlPath, filterdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+
+    };
+    dataFactory.showAlert = function (msg) {
+        $rootScope.$broadcast('showAlert', msg);
+    };
+    dataFactory.showSuccess = function showSuccess(msg) {
+        $rootScope.$broadcast('showSuccess', msg);        
+    };
+    dataFactory.showWarning = function showWarning(msg) {
+        $rootScope.$broadcast('showWarning', msg);
+    };
+    dataFactory.showInfo = function showInfo(msg) {
+        $rootScope.$broadcast('showInfo', msg);
+    };
+    dataFactory.updateOrderStatus = function (orderdata, returnvalue) {
+        urlPath = urlBase + "order/updateorderstatus";
+        $http.put(urlPath, orderdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.cancelOrder = function (orderdata, returnvalue) {
+        urlPath = urlBase + "order/CancelOrder";
+        $http.put(urlPath, orderdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.coatingmasterlist = function (filterdata, returnvalue) {
+        urlPath = urlBase + "item/getcoatingmaster";
+        $http.post(urlPath, filterdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getcustomerconsignee = function (filterdata, returnvalue) {
+        urlPath = urlBase + "customer/getuserconsignees/" + filterdata;
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.changeuserauthentication = function (filterdata, returnvalue) {
+        urlPath = urlBase + "userinfo/changeuserauthentication?filtertext=" + filterdata;
+        $http.put(urlPath, filterdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.consigneelist = function () {
+        return angular.fromJson(window.sessionStorage.getItem('consigneelist'));
+    };
+    dataFactory.filterData = function () {
+        return angular.fromJson(window.sessionStorage.getItem('filterdata'));
+    };
+    dataFactory.startDate = function () {
+        return window.sessionStorage.getItem('filterdata').startdate;
+    };
+    dataFactory.getorderstatusHistorybyjob = function (jobnumber, returnvalue) {   
+        jobnumber = jobnumber.replace(/\//g, "_");
+        urlPath = urlBase + "order/getorderstatusHistorybyjob/" + jobnumber;
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getCustomerConsigneeListDetail = function (customerid, returnvalue) {
+        urlPath = urlBase + "customer/GetCustomerConsigneeListDetail/" + customerid;
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getCustomerItemCatalogue = function (customerid, returnvalue) {
+        urlPath = urlBase + "customer/GetCustomerItemCatalogue/" + customerid;
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getCSList = function (returnvalue) {
+        urlPath = urlBase + "customer/GetCSList/";
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getItemDetail = function (id, returnvalue) {
+        urlPath = urlBase + "item/GetItemDetail/" + id;
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.updateCustomerContact = function (postdata, returnvalue) {
+        urlPath = urlBase + "customer/updatecustomercontact";
+        $http.put(urlPath, postdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.updateCustomerDetail = function (postdata, returnvalue) {
+        urlPath = urlBase + "customer/UpdateCustomerDetail";
+        $http.put(urlPath, postdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.tintdetail = function (returnvalue) {
+        urlPath = urlBase + "item/gettintdetail";
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.updateEndCustomer = function (postdata, returnvalue) {
+        urlPath = urlBase + "customer/UpdateEndCustomer";
+        $http.post(urlPath, postdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.framelist = function (returnvalue) {
+        urlPath = urlBase + "item/framelist";
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.frameshapelist = function (returnvalue) {
+        urlPath = urlBase + "item/frameshapelist";
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getUserMenuByRole = function (id, returnvalue) {
+        urlPath = urlBase + "userinfo/GetUserMenuByRole/" + id;
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getOrderAnalysis = function (postdata, returnvalue) {
+        urlPath = urlRepoBase + "report/OrderAnalysis";
+        $http.post(urlPath, postdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getOrderAnalysisByProduct = function (postdata, returnvalue) {
+        urlPath = urlRepoBase + "report/OrderAnalysisByProduct";
+        $http.post(urlPath, postdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getOrderAnalysisByLensIndex = function (postdata, returnvalue) {
+        urlPath = urlRepoBase + "report/OrderAnalysisByLensIndex";
+        $http.post(urlPath, postdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getOrderAnalysisByCustomerLensIndex = function (postdata, returnvalue) {
+        urlPath = urlRepoBase + "report/OrderAnalysisByCustomerLensIndex";
+        $http.post(urlPath, postdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getOrderAnalysisByCustomerLens = function (postdata, returnvalue) {
+        urlPath = urlRepoBase + "report/OrderAnalysisByCustomerLens";
+        $http.post(urlPath, postdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getOnlineUsers = function (returnvalue) {
+        urlPath = urlBase + "userinfo/onlineusers";
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+
+    //Custom
+    dataFactory.getEmployeeList = function (returnvalue) {
+        urlPath = urlBase + "employee/employees/";
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getEmployeeDetail = function (employeeid, returnvalue) {
+        urlPath = urlBase + "employee/employeedetail/" + employeeid;
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getInvoicesHasNotFile = function (filterdata, returnvalue) {
+        urlPath = urlBase + "invoice/GetInvoiceHasNotFile";
+        $http.post(urlPath, filterdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+
+    };
+    dataFactory.updateInvoiceHasFile = function (orderdata, returnvalue) {
+        urlPath = urlBase + "invoice/updateInvoiceHasFile";
+        $http.put(urlPath, orderdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.updateCustomerSettings = function (postdata, returnvalue) {
+        urlPath = urlBase + "customer/UpdateCustomerSettings";
+        $http.put(urlPath, postdata, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getsaleteam = function (returnvalue) {
+        urlPath = urlBase + "onlineregistration/salesteam";
+        $http.get(urlPath).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.getdistributors = function (returnvalue) {
+        urlPath = urlBase + "onlineregistration/distributors";
+        $http.get(urlPath).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.generateotp = function (postdata, returnvalue) {
+        urlPath = urlBase + "onlineregistration/generateotp";
+        $http.post(urlPath, postdata).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.validateotp = function (postdata, returnvalue) {
+        urlPath = urlBase + "onlineregistration/validateotp";
+        $http.post(urlPath, postdata).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.saveonlineregistration = function (postdata, returnvalue) {
+        urlPath = urlBase + "onlineregistration/saveonlineregistration";
+        $http.post(urlPath, postdata).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    dataFactory.validateNovaCardNumber = function (novacardnumber, returnvalue) {
+        urlPath = urlBase + "order/validatenovacardnumber/" + novacardnumber;
+        $http.get(urlPath, headerData).then(function (response) {
+            var listdata = response.data;
+            return returnvalue(listdata);
+        }, function (err) {
+            return returnvalue(null);
+        });
+    };
+    return dataFactory;
+}]);

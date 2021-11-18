@@ -1,0 +1,31 @@
+ -->
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Priscription</title>
+    
+</head>
+<body>
+	<div style="width:125px; display: inline-block;"><b>Order Number</b></div> <a id="oci_no"></a>
+	
+	<script src="../../../static/js/core/jquery.3.2.1.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			var postdata = {year_data: "2021"};
+			$.ajax({
+				url: 'http://192.168.0.127:80/api_year_month/',
+				type: 'post',
+				dataType: 'json',
+				contentType: 'application/json',
+				success: function (data) {
+					alert(data.result.Node[0].Month);
+				},
+				data: JSON.stringify(postdata)
+			});		
+		});
+	</script>
+</body>
+</html>

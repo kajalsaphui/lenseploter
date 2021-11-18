@@ -1,0 +1,1 @@
+{'customer_code': row[0], 'Application_name': row[1], 'order_nuber' : row[2], 'oci_no' : row[3], 'cast_name' : row[4],'order_date' : row[5]}

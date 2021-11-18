@@ -1,0 +1,229 @@
+﻿.body
+{
+	font-family: verdana,arial,sans-serif;
+	margin-bottom:2px;
+	margin-left:5px;
+	margin-right:5px;
+	margin-top:2px;
+}
+
+h2
+{
+	font-family: verdana,arial,sans-serif;
+	color:#373737;
+}
+
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 2px;
+	border-color: #666666;
+	border-collapse: collapse;
+	width:100%;
+}
+table.gridtable th {
+	border-width: 2px;
+	padding: 8px;
+	border-style: dotted;
+	border-color: #666666;
+	background-color: #dedede;
+	width:17%;
+}
+table.gridtable td {
+	border-width: 2px;
+	padding: 8px;
+	border-style: dotted;
+	border-color: #666666;
+	background-color: #ffffff;
+	width:17%;
+}
+
+/* another table */
+
+table.grid {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+	width:100%;
+}
+table.grid th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: dotted;
+	border-color: #666666;
+	background-color: #dedede;
+	/*width:17%;*/
+}
+table.grid td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: dotted;
+	border-color: #666666;
+	background-color: #ffffff;
+	/*width:17%;*/
+}
+
+/* end */
+
+#m_header
+{
+	height:30px;
+	background-image:url("../images/m_header.png");font:normal 1px Arial;text-decoration:none;
+	background-repeat: repeat-x;
+}
+
+#m_top
+{
+	height:40px;
+	background-image:url("../images/m_top.png");font:normal 1px Arial;text-decoration:none;
+	background-repeat: repeat-x;
+}
+
+.blankspace
+{
+	height:25px;
+}
+
+#m_left
+{
+	font-family: verdana,arial,sans-serif;
+	float:left;
+	width:13%;
+	overflow:hidden;
+	nowrap:"nowrap"
+}
+
+#m_middle
+{
+	font-family: verdana,arial,sans-serif;
+	float:left;
+	width:2%;
+	overflow:hidden;
+	nowrap:"nowrap"
+}
+
+#m_right
+{
+	font-family: verdana,arial,sans-serif;
+	overflow:hidden;
+	width:85%;
+	nowrap:"nowrap"
+	
+}
+
+.LinkButton
+{
+	font-family: verdana,arial,sans-serif;
+	font-size:12px;
+}
+
+fieldset {
+        /*margin:20px;*/
+        padding:0 10px 10px;
+        border:1px solid #666;
+        border-radius:8px;
+        box-shadow:0 0 10px #666;
+        padding-top:10px;
+        font-family: verdana,arial,sans-serif;
+ }  
+
+legend {
+        padding:2px 4px;
+        background:#fff; /* For better legibility against the box-shadow */
+    }
+
+fieldset > legend {
+        float:left;
+        margin-top:-20px;
+        font-family: verdana,arial,sans-serif;
+        font-size:15px;
+}
+
+fieldset > legend + * {
+        clear:both;
+    }
+
+.textbox
+{
+	font-family: verdana,arial,sans-serif;
+	font-size:12px;
+	width:100%;
+}
+
+.radiobutton
+{
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	width:100%;
+}
+.button
+{
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	font-size:bold;
+}
+
+#h_left
+{
+	font-family: verdana,arial,sans-serif;
+	float:left;
+	width:30%;
+	overflow:hidden;
+	nowrap:"nowrap"
+}
+
+#h_middle
+{
+	font-family: verdana,arial,sans-serif;
+	float:left;
+	width:5%;
+	overflow:hidden;
+	nowrap:"nowrap"
+}
+
+#h_right
+{
+	font-family: verdana,arial,sans-serif;
+	overflow:hidden;
+	width:65%;
+	nowrap:"nowrap";
+	vertical-align:middle;
+	text-align:justify;
+}
+
+.errorbody
+{
+	font: 12px verdana,arial,sans-serif;
+}
+
+.errorfooter
+{
+	height: 15px; 
+	vertical-align: 
+	middle; text-align: 
+	left; background: url(../images/error-down.jpg) repeat-x;
+}
+
+.button_0 {
+	background: #5B74A8;
+	background: -moz-linear-gradient(top,#5B74A8 0%,#5B74A8 100%);
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#5B74A8), color-stop(100%,#5B74A8));
+	background: -webkit-linear-gradient(top,#5B74A8 0%,#5B74A8 100%);
+	background: -o-linear-gradient(top,#5B74A8 0%,#5B74A8 100%);
+	background: -ms-linear-gradient(top,#5B74A8 0%,#5B74A8 100%);
+	background: linear-gradient(top,#5B74A8 0%,#5B74A8 100%);
+	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#5B74A8',endColorstr='#5B74A8',GradientType=0);
+	padding:2px 6px;
+	color:#fff;
+	font-family:'Helvetica',sans-serif;
+	font-size:11px;
+	border-radius:0;
+	-moz-border-radius:0;
+	-webkit-border-radius:0;
+	border:1px solid #1A356E
+}
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<title>VisionRx Web-Shop</title>
+ <link href="../../static/login_css/bootstrap337.min.css" rel="stylesheet">
+    <link href="../../static/login_css/demo.css" rel="stylesheet">
+    <link href="../../static/login_css/login.domestic.css" rel="stylesheet">
+    <link href="../../static/login_css/custom.domestic.css" rel="stylesheet">
+    <link href="../../static/login_css/ui-router-breadcrumbs.min.css" rel="stylesheet">
+</head>
+<body ng-app="appOnlineOrder" class="ng-scope">
+<div ui-view="" class="container-fluid ng-scope"><div class="row ng-scope">
+<div class="col-sm-6 vrx-login-info" style="min-height:99vh; max-height:99vh; padding: 0px 25px;">
+    <div class="row text-center" style="min-height:70vh; max-height:70vh;">
+        <h1 style="color: #0096d6; font-size:40px; letter-spacing:0.75px;">VisionRx Web-Shop </h1>
+            <h4 style="letter-spacing:0.75px;">A smarter and convenient way to track upto six months lens orders</h4>
+        </div>
+            <div class="row">
+                <img class="pull-right" src="../../static/img/Icon with strip.png" alt="Vision Rx" style="opacity:0.75; width:100%;">
+            </div>
+            <div class="row" style="padding-left:20px; color:#fff; background-color:#2c2c2c; opacity:0.60; min-height: 9vh;">
+                <h3><strong>GKB Rx Lens Pvt. Ltd.</strong>, India</h3>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12" style="padding:30px;">
+                    <img class="pull-right" src="../../static/img/vrxlogo.png" alt="Vision Rx" style="width:100px;">
+                </div>
+            </div>
+            <div class="row" style="min-height:68vh;max-height:68vh;">
+                <!-- uiView:  --><div ui-view="" class="ng-scope"><form method="POST" action=""  class="form-horizontal ng-scope ng-pristine ng-invalid ng-invalid-required" style="margin: 0 auto;">
+        <div class="col-sm-12 text-center">
+            <h3 style="letter-spacing:0.75px; color: #0096d6;">Sign-In</h3>
+            <!--<h4 style="letter-spacing:0.75px; color: #0096d6;">Experience Excellence</h4>-->
+            <div class="form-group" style="margin-bottom:25px;">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <input type="text" name="username" placeholder="User Name" class="form-control " style="font-size:16px; height:50px;" ng-model="credentials.userid" data-ng-required="true" required="required">
+                    <span class="help-block ng-hide" ng-show="credentials.Submit==true &amp;&amp; frmLogin.username.$invalid">User name can't be blank</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <input type="password" name="userkey" placeholder="Password" class="form-control " style="font-size:16px; height:50px;" ng-model="credentials.password" ng-required="true" required="required">
+                    <span class="help-block ng-hide" ng-show="credentials.Submit==true &amp;&amp; frmLogin.userkey.$invalid">Password can't be blank</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-3">
+                    <button type="submit" class="btn btn-primary form-control btn-lg" style="height:45px; font-size:18px;" ng-disabled="credentials.Submitted==true" value="Login" ng-click="credentials.Submit=true; frmLogin.$valid &amp;&amp; AuthenticateUser()">
+                        Sign-In
+                    </button>
+                    <span class="help-block ng-hide" ng-show="credentials.invalidentry==true">Invalid User name or Password</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4 class="text-left col-sm-offset-1" style="letter-spacing:0.75px; color: #0096d6;">
+                <span>Not yet registered?</span>
+            </h4>
+            <h5 class="text-left col-sm-offset-1" style="font-size:14px;letter-spacing:0.75px;">
+                <span>Please contact your VRX Account Incharge/CS Executive</span>
+            </h5>
+        </div>
+        <div class="col-md-6">
+            <h4 class="text-left col-sm-offset-1" style="letter-spacing:0.75px; color: #0096d6;">
+                <span>Forgot password?</span>
+            </h4>
+            <h5 class="text-left col-sm-offset-1" style="font-size:14px;letter-spacing:0.75px;">
+                <span>Please click <a href="forgot.htm">here</a> </span>
+            </h5>
+        </div>
+    </form></div>
+            </div>
+            <div class="row" style="min-height:8vh;">
+                <div class="col-sm-12">
+                    <!--<h4 style="color: #0096d6;letter-spacing:0.75px;">CONTACT</h4>
+                    <h5 style="letter-spacing:0.75px;"><strong>For any Support on Online Ordering:</strong></h5>-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-9">
+                    <!--<span style="font-size:13px;letter-spacing:0.75px;">Call: +91-9971004184 Email: saurabhpuri@vrxlab.com</span>-->
+                </div>
+            </div>
+        </div>
+    </div></div>
+        <script src="../../static/login_css/jquery.min.js.download"></script>
+        <script src="../../static/login_css/jquery-ui.min.js.download"></script>
+        <script src="../../static/login_css/bootstrap337.min.js.download"></script>
+        <script src="../../static/login_css/angular.js.download"></script>
+        <script src="../../static/login_css/angular-ui-router.min.js.download"></script>
+        <script src="../../static/login_css/angular-filter.js.download"></script>
+        <script src="../../static/login_css/angular-busy.js.download"></script>
+        <script src="../../static/login_css/loading-bar.min.js.download"></script>
+        <script src="../../static/login_css/angular-sanitize.js.download"></script>
+        <script src="../../static/login_css/ui-router-breadcrumbs.min.js.download"></script>
+        <script src="../../static/login_css/stateEvents.js.download"></script>
+        <script src="../../static/login_css/moment.js.download"></script>
+        <script src="../../static/login_css/ui-bootstrap-0.12.0.js.download"></script>
+        <script src="../../static/login_css/app.domestic.main.js.download"></script>
+        <script src="../../static/login_css/app.domestic.filter.js.download"></script>
+        <script src="../../static/login_css/app.domestic.directives.js.download"></script>
+        <script src="../../static/login_css/app.domestic.routeconfig_login.js.download"></script>
+        <script src="../../static/login_css/app.domestic.httpservice.js.download"></script>
+        <script src="../../static/login_css/app.domestic.authentication.js.download"></script>
+
+    </body>
+    </html>

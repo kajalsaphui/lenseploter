@@ -1,0 +1,457 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Priscription</title>
+    
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+	<!--<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />-->
+	<!--<link rel="icon" href="../../static/img/icon.ico" type="image/x-icon"/>-->
+	
+	<!-- Fonts and icons -->
+	<script src="../../static/js/plugin/webfont/webfont.min.js"></script>
+	<script>
+	    WebFont.load({
+	        google: { "families": ["Lato:300,400,700,900"] },
+	        custom: { "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../static/css/fonts.min.css'] },
+	        active: function() {
+	            sessionStorage.fonts = true;
+	        }
+	    });
+	</script>
+
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="../../static/css/min.css">
+	<link rel="stylesheet" href="../../static/css/atlantis.min.css">
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link rel="stylesheet" href="../../static/css/demo.css">
+	<<link rel="stylesheet" href="../../static/css/style.css">
+	
+	
+    <link href="../../static/css/AdminLTE.min.css" rel="stylesheet">
+    
+</head>
+<body>
+
+   <div class="wrapper">
+      <div class="main-header">
+    <!-- Logo Header -->
+    <div class="logo-header" data-background-color="blue2">
+		
+	    <a href="login.html" class="logo">
+		    <img src="../../static/img/vrxlogo.png" alt="VisionRx lab" style="width:100px;height:50px; padding-top:10px;">
+	    </a>
+	    <div style="padding-top:20px;" class="nav-toggle">
+	    </div>
+    </div>
+		<!-- End Logo Header -->
+
+	    <!-- Navbar Header -->
+	    <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+    		
+		    <div class="container-fluid">
+			    <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+    				
+				    <!-- Profile top left menu-->
+				    <li class="nav-item dropdown hidden-caret">
+					    <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+						    <div class="avatar-sm">
+							    <img src="../../static/img/user.jpg" alt="..." class="avatar-img rounded-circle">
+						    </div>
+					    </a>
+					    <ul class="dropdown-menu dropdown-user animated fadeIn">
+						    <div class="dropdown-user-scroll scrollbar-outer">
+							    <li>
+								    <div class="user-box">
+									    <div class="avatar-lg"><img src="../../static/img/user.jpg" alt="image profile" class="avatar-img rounded"></div>
+									    <div class="u-text">
+										    <h4>Customer name</h4>
+										    <p class="text-muted">hello@example.com</p>
+										    <a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+									    </div>
+								    </div>
+							    </li>
+							    <li>
+								    <!--<div class="dropdown-divider"></div>
+								    <a class="dropdown-item" href="#">My Profile</a>
+								    <a class="dropdown-item" href="#">My Balance</a>
+								    <a class="dropdown-item" href="#">Inbox</a>
+								    <div class="dropdown-divider"></div>
+								    <a class="dropdown-item" href="#">Account Setting</a>-->
+								    <div class="dropdown-divider"></div>
+								    <a class="dropdown-item" href="#">Logout</a>
+							    </li>
+						    </div>
+					    </ul>
+				    </li>
+			    </ul>
+		    </div>
+	    </nav>
+	<!-- End Navbar -->
+    </div>
+        
+       
+			<div class="content">
+				<div class="page-inner">
+				<h4 class="page-title">Prescription</h4>	
+			    <!-- body -->
+		        <div class="row" style="font-size:12px;">
+                    <div class="col-md-3">
+                        <div class="box box-primary">
+                            <div class="box-body box-profile" style="height:360px;">
+                                <!--<img class="profile-user-img img-responsive" src="frame1.jpg" alt="Frame 1">-->
+                                <h3 class="profile-username text-center">OCI Number</h3>
+                                <p class="text-muted text-center"><span ng-show="record.lelensmaterial.length>0"></span> </p>
+                                <ul class="list-group list-group-unbordered">
+                                    <li class="list-group-item">
+                                        <div style="width:125px; display: inline-block;"><b>Order Number</b></div> <a id="OCINUMBER"></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div style="width:125px; display: inline-block;"><b>Order Date</b></div> <a id="orderDate"></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div style="width:125px; display: inline-block;"><b>Customer Code</b></div> <a id="CUSTCODE"></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div style="width:125px; display: inline-block;"><b>Cust. Reference</b></div> <a id="REFNUMBER"></a>
+                                    </li>
+                                   
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                       <div class="box box-primary">
+                           <div class="col-md-12">
+					            <div class="card">
+						            <div class="card-header">
+							            <h4 class="card-title">Powers Detail & Description</h4>
+						            </div>
+						            <div class="card-body">
+							            <ul class="nav nav-pills nav-secondary" id="pills-tab" role="tablist">
+								            <li class="nav-item">
+									            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#power-detail" role="tab" aria-controls="power-details" aria-selected="true">Power</a>
+								            </li>
+								            <li class="nav-item">
+											    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#lens-detail" role="tab" aria-controls="pills-contact" aria-selected="false">Lens</a>
+										    </li>
+								            <li class="nav-item">
+									            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#additional-info" role="tab" aria-controls="additional-info" aria-selected="false">Additional Info</a>
+								            </li>
+							            </ul>
+						                <div class="tab-content mt-2 mb-3" id="pills-tabContent">
+								            <div class="tab-pane fade show active" id="power-detail" role="tabpanel" aria-labelledby="pills-home-tab">
+									            <table class="table table-condensed">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Sph</th>
+                                                        <th>Cyl</th>
+                                                        <th>Axis</th>
+                                                        <th>Add</th>
+                                                        <th>PD </th>
+                                                        <th>NPD</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>R</td>
+                                                        <td id="RESPHERE"></td>
+                                                        <td id="RECYLINDER"></td>
+                                                        <td id="REAXIS"></td>
+                                                        <td id="READDITION"></td>
+                                                        <td id="REPD"></td>
+                                                        <td id="RENPD"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>L</td>
+                                                        <td id="LESPHERE"></td>
+                                                        <td id="LECYLINDER"></td>
+                                                        <td id="LEAXIS"></td>
+                                                        <td id="LEADDITION"></td>
+                                                        <td id="LEPD"></td>
+                                                        <td id="LENPD"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="tab-pane fade" id="lens-detail" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                                <table class="table table-condensed">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Lens Code</th>
+                                                        <th>Description</th>
+                                                        <th>Base Prism</th>
+                                                        <th>Base Angle</th>
+                                                        <th>Diameter</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>R</td>
+                                                        <td id="RECODE"></td>
+                                                        <td id="REDESC"></td>
+                                                        <td id="REPRISM1"></td>
+                                                        <td id="REPRISM1DIA"></td>
+                                                        <td id="RECOMMDIA"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>L</td>
+                                                        <td id="LECODE"></td>
+                                                        <td id="LEDESC"></td>
+                                                        <td id="LEPRISM1"></td>
+                                                        <td id="LEPRISM1DIA"></td>
+                                                        <td id="LECOMMDIA"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+						                    <div class="tab-pane fade" id="additional-info" role="tabpanel" aria-labelledby="pills-profile-tab">
+							                   <table class="table table-condensed">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Crib Dia</th>
+                                                        <th>Base Curve</th>
+                                                        <th>CT</th>
+                                                        <th>ET</th>
+                                                        <th>H.Dec</th>
+                                                        <th>V.Dec</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>R</td>
+                                                        <td id="REREQDIA"></td>
+                                                        <td id="REBASE"></td>
+                                                        <td id="RECT"></td>
+                                                        <td id="REET"></td>
+                                                        <td id="REHEDEC"></td>
+                                                        <td id="REVDEC"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>L</td>
+                                                        <td id="LEREQDIA"></td>
+                                                        <td id="LEBASE"></td>
+                                                        <td id="LECT"></td>
+                                                        <td id="LEET"></td>
+                                                        <td id="LEHEDEC"></td>
+                                                        <td id="LEVDEC"></td>
+                                                    </tr>
+                                                </table>
+						                    </div>
+					                    </div>
+					                </div>
+				                </div>
+			                </div>
+			            </div>
+                    </div>
+                </div>
+                <div class="row" style="font-size:12px;">
+                    <div class="col-md-3">
+                        <div class="box box-primary">
+				            <div class="card">
+					            <div class="card-header">
+						            <h4 class="card-title">Services</h4>
+					            </div>
+					            <div class="card-body">
+    					            <ul class="list-group list-group-unbordered">
+                                        <li class="list-group-item">
+                                            <div style="width:125px; display: inline-block;"><b>Coating</b></div> <a id="COATINGCOADE"></a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div style="width:125px; display: inline-block;"><b>Coating Desc.</b></div> <a id="COATINGDESC"></a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div style="width:125px; display: inline-block;"><b>Tint</b></div> <a id="TINTCOADE"></a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div style="width:125px; display: inline-block;"><b>Tint Desc.</b></div> <a id="TINTDESC"></a>
+                                        </li>
+                                   
+                                    </ul>
+					            </div>
+				            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-9">
+                       <div class="box box-primary">
+                           <div class="col-md-12">
+					            <div class="card">
+						            <div class="card-header">
+							            <h4 class="card-title">Frame</h4>
+						            </div>
+						            <div class="card-body">
+					                    <table class="table table-condensed">
+                                            <tr>
+                                                <th>Frame Code</th>
+                                                <th>Frame Desc.</th>
+                                                <th>Width</th>
+                                                <th>Height</th>
+                                                <th>DBL</th>
+                                            </tr>
+                                            <tr>
+                                                <td id="FRAMECODE"></td>
+                                                <td id="FRAMEDESC"></td>
+                                                <td id="BOXA"></td>
+                                                <td id="BOXB"></td>
+                                                <td id="DBL"></td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5"><b>Spl. Instruction:</b> <span ng-show="record.lelensmaterial.length>0" id="SPLINSTRUCTION"></span></td>
+                                            </tr>
+                                            <tr><td colspan="5" style="width: 100%;align-items: center;"><img id="SHAPE"></td></tr>
+                                        </table>
+						            </div>
+					            </div>
+				            </div>
+			            </div>
+		            </div>
+    		        
+                </div>
+                
+                 <!-- end body -->
+                </div>		
+				
+		    </div>
+			<footer class="footer">
+	        <div class="container-fluid">
+			    <nav class="pull-left">
+				    <ul class="nav">
+						        <li class="nav-item">
+							        <a class="nav-link" href="">
+								        Help
+							        </a>
+						        </li>
+						        <!--<li class="nav-item">
+							        <a class="nav-link" href="#">
+								        Help
+							        </a>
+						        </li>
+						        <li class="nav-item">
+							        <a class="nav-link" href="#">
+								        Licenses
+							        </a>
+						        </li>-->
+					        </ul>
+				 </nav>
+			    <div class="copyright ml-auto">
+			        2021, VisionRx lab <!--<i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>-->
+			    </div>				
+			</div>
+	        </footer>
+		
+	
+   </div>
+       
+   
+	<!--   Core JS Files   -->
+	<script src="../../static/js/core/jquery.3.2.1.min.js"></script>
+	<script src="../../static/js/core/popper.min.js"></script>
+	<script src="../../static/js/core/bootstrap.min.js"></script>
+	<!-- jQuery UI -->
+	<script src="../../static/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="../../static/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	
+	<!-- jQuery Scrollbar -->
+	<script src="../../static/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+	<!-- Atlantis JS -->
+	<script src="../../static/js/atlantis.min.js"></script>
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="../../static/js/setting-demo2.js"></script>
+	<!--anirudha-->
+	<script src="../../static/js/jquery.cookie.js"></script>
+	<script>
+	var csrftoken = $.cookie('csrftoken');
+
+	function csrfSafeMethod(method) {
+		// these HTTP methods do not require CSRF protection
+		return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+	}
+	
+	$.ajaxSetup({
+		beforeSend: function(xhr, settings) {
+			if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+				xhr.setRequestHeader("X-CSRFToken", csrftoken);
+			}
+		}
+	});
+</script>
+	<script>
+		$(document).ready(function() {
+			var data = localStorage.getItem("editdata");
+			// debugger;
+			var postdata = {oci_no: data};
+			$.ajax({
+				url: '/api_cast_oci/',
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json',
+				success: function (data) {
+					//#orderDate').innerHTML(data.result.Node.ORDERDATE);
+					document.getElementById("orderDate").innerHTML = data.result.Node.ORDERDATE;
+					document.getElementById("OCINUMBER").innerHTML = data.result.Node.OCINUMBER;
+					document.getElementById("CUSTCODE").innerHTML = data.result.Node.CUSTCODE;
+					document.getElementById("REFNUMBER").innerHTML = data.result.Node.REFNUMBER;
+
+					document.getElementById("RESPHERE").innerHTML = data.result.Node.RESPHERE;
+					document.getElementById("RECYLINDER").innerHTML = data.result.Node.RECYLINDER;
+					document.getElementById("REAXIS").innerHTML = data.result.Node.REAXIS;
+					document.getElementById("READDITION").innerHTML = data.result.Node.READDITION;
+					document.getElementById("REPD").innerHTML = data.result.Node.REPD;
+					document.getElementById("RENPD").innerHTML = data.result.Node.RENPD;
+
+					document.getElementById("LESPHERE").innerHTML = data.result.Node.LESPHERE;
+					document.getElementById("LECYLINDER").innerHTML = data.result.Node.LECYLINDER;
+					document.getElementById("LEAXIS").innerHTML = data.result.Node.LEAXIS;
+					document.getElementById("LEADDITION").innerHTML = data.result.Node.LEADDITION;
+					document.getElementById("LEPD").innerHTML = data.result.Node.LEPD;
+					document.getElementById("LENPD").innerHTML = data.result.Node.LENPD;
+
+
+
+					document.getElementById("RECODE").innerHTML = data.result.Node.RECODE;
+					document.getElementById("REDESC").innerHTML = data.result.Node.REDESC;
+					document.getElementById("REPRISM1").innerHTML = data.result.Node.REPRISM1;
+					document.getElementById("REPRISM1DIA").innerHTML = data.result.Node.REPRISM1DIA;
+					document.getElementById("RECOMMDIA").innerHTML = data.result.Node.RECOMMDIA;
+
+					document.getElementById("LECODE").innerHTML = data.result.Node.LECODE;
+					document.getElementById("LEDESC").innerHTML = data.result.Node.LEDESC;
+					document.getElementById("LEPRISM1").innerHTML = data.result.Node.LEPRISM1;
+					document.getElementById("LEPRISM1DIA").innerHTML = data.result.Node.LEPRISM1DIA;
+					document.getElementById("LECOMMDIA").innerHTML = data.result.Node.LECOMMDIA;
+
+					document.getElementById("REREQDIA").innerHTML = data.result.Node.REREQDIA;
+					document.getElementById("REBASE").innerHTML = data.result.Node.REBASE;
+					document.getElementById("RECT").innerHTML = data.result.Node.RECT;
+					document.getElementById("REET").innerHTML = data.result.Node.REET;
+
+					document.getElementById("LEREQDIA").innerHTML = data.result.Node.LEREQDIA;
+					document.getElementById("LEBASE").innerHTML = data.result.Node.LEBASE;
+					document.getElementById("LECT").innerHTML = data.result.Node.LECT;
+					document.getElementById("LEET").innerHTML = data.result.Node.LEET;
+
+
+					document.getElementById("COATINGCOADE").innerHTML = data.result.Node.COATINGCOADE;
+					document.getElementById("COATINGDESC").innerHTML = data.result.Node.COATINGDESC;
+					document.getElementById("TINTCOADE").innerHTML = data.result.Node.TINTCOADE;
+					document.getElementById("TINTDESC").innerHTML = data.result.Node.TINTDESC;
+
+					document.getElementById("FRAMECODE").innerHTML = data.result.Node.FRAMECODE;
+					document.getElementById("FRAMEDESC").innerHTML = data.result.Node.FRAMEDESC;
+					document.getElementById("BOXA").innerHTML = data.result.Node.BOXA;
+					document.getElementById("BOXB").innerHTML = data.result.Node.BOXB;
+					document.getElementById("DBL").innerHTML = data.result.Node.DBL;
+					document.getElementById("SPLINSTRUCTION").innerHTML = data.result.Node.SPLINSTRUCTION;
+				},				
+				data: JSON.stringify(postdata)
+			});	
+			$.ajax({
+				url: 'http://127.0.0.1:8000/ploat_data/',
+				type: 'post',
+				dataType: 'json',
+				contentType: 'application/json',
+				success: function (data) {
+					// document.getElementById("SHAPE").innerHTML = data.shape.shape;
+					var imgsrc64 = "data:image/png;base64,"+data.shape.shape;
+					$("#SHAPE").attr("src",imgsrc64);					
+				},
+				data: JSON.stringify(postdata)
+			});		
+		});
+
+	</script>
+</body>
+</html>

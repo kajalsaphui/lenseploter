@@ -1,0 +1,387 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>oci print</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../static/css/style.css" />
+</head>
+<body>
+    <div>
+        <table style="width:100%; padding:15px;" cellspacing="0">
+            <tr>
+                <td colspan="13"></td>
+
+            </tr>
+            <tr>
+                <td style="width:5%;"></td>
+                <td colspan="11" style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 12pt; color: #000000; text-align: left" nowrap>Order - Cum - Invoice</td>
+                <td style="width:5%;"></td>
+            </tr>
+            <tr>
+                <td colspan="13" height="10px"></td>
+
+            </tr>
+            <tr>
+
+                <td style="width:5%;"></td>
+                <td colspan="3" style="width:30%;vertical-align:top; border-top: 1px solid black; border-left: 1px solid black;border-bottom: 1px solid black; border-right: 1px solid black;">
+                    <table style="width:100%;">
+                        <tr>
+                            <td colspan="4"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left" nowrap>GKB Rx Lens Pvt. Ltd</td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-indent: 0px; font-family: Arial; font-weight: 400; font-size: 9pt; color: #000000; text-align: left" nowrap>Plot No. A-14, Infocity Sector 33-34</td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:20%;" nowrap>Order No :</td>
+                            <td id="OCINUMBER"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:20%;" nowrap>Date :</td>
+
+                            <td id="orderDate"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:20%;" nowrap>Customer :</td>
+
+                            <td id="CUSTCODE"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:20%;" nowrap>Ref. No. :</td>
+                            <td id="REFNUMBER"></td>
+                        </tr>
+
+                    </table>
+                </td>
+                <td colspan="8" style="width:60%; vertical-align:top; border-top: 1px solid black; border-right: 1px solid black;border-bottom: 1px solid black;">
+                    <table style="width:100%;height:100%;border-left:solid 1px balck;">
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:10%;" nowrap>Frame</td>
+                            <td id="FRAMECODE" style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:25%;" nowrap></td>
+
+
+                            <td  style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:10%;" nowrap>Type</td>
+                            <td id="FRAMEDESC" style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:25%;" nowrap></td>
+
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:10%;" nowrap>FBow ANG</td>
+
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:20%;" nowrap>Bridge <a id="DBL" style="padding:10px;"></a></td>
+
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left" nowrap>RE Drill</td>
+                            <td colspan="2" id="REDRILLE"></td>
+
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left" nowrap>RE Drill</td>
+                            <td colspan="2"  id="LEDRILLE"></td>
+                        </tr>
+                        <tr>
+
+                            <td></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>HBOX</u></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>VBOX</u></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>PD</u></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>HT</u></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>ED</u></td>
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline" nowrap>RE</td>
+                            <td id="REHBOX"></td>
+                            <td id="REVBOX"></td>
+                            <td id="REPD"></td>
+                            <td id="REHT"></td>
+                            <td id="REED"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline" nowrap>LE</td>
+                            <td id="LEHBOX"></td>
+                            <td id="LEVBOX"></td>
+                            <td id="LEPD"></td>
+                            <td id="LEHT"></td>
+                            <td id="LEED"></td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="6"><hr /></td>
+
+
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline" nowrap>RE</td>
+                            
+                            <td id="RECODE"></td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="5" style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline" nowrap>LE</td>
+                            
+                            <td id="LECODE"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline" nowrap>Tinting</td>
+                            <td colspan="3" id="TINTCOADE"></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline" nowrap>Coating</td>
+                            <td colspan="3" id="COATINGCOADE"></td>
+
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline" nowrap>RE QTY</td>
+                            <td id="REQTY"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline" nowrap>Fitting</td>
+                            <td colspan="3" id="FITTINGCODE"></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline" nowrap>LE QTY</td>
+                            <td id="LEQTY"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline" nowrap>Shield</td>
+                            <td colspan="3"></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table>
+
+                </td>
+                <td style="width:5%;"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center;border-left: 1px solid black; font-style: underline" nowrap><u>Bl.Dia</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>Shape</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>CRIB Dia</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>Sph</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>Cyl</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>Axis</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>Addn</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>Base</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>CT</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>ET</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center;border-right: 1px solid black; font-style: underline" nowrap><u>CORRIDOR</u></td>
+
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left;border-left: 1px solid black; font-style: underline" nowrap>RE</td>
+                <td id="RECOMMDIA"></td>
+                <td id="RESHAPE"></td>
+                <td id="REREQDIA"></td>
+                <td  id="RESPHERE"></td>
+                <td id="RECYLINDER"></td>
+                <td id="REAXIS"></td>
+                <td id="READDITION"></td>
+                <td id="REBASE"></td>
+                <td id="RECT"></td>
+                <td id="REET"></td>
+                <td style="border-left: 1px solid black;" id="RECORLEN"></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align:left;border-left: 1px solid black; font-style: underline" nowrap>LE</td>
+                <td id="LECOMMDIA"></td>
+                <td id="LESHAPE"></td>
+                <td id="LEREQDIA"></td>
+                <td id="LESPHERE"></td>
+                <td id="LECYLINDER"></td>
+                <td id="LEAXIS"></td>
+                <td id="LEADDITION"></td>
+                <td id="LEBASE"></td>
+                <td id="LECT"></td>
+                <td id="LEET"></td>
+                <td style="border-left: 1px solid black;" id="RECORLEN"></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td colspan="7" style="vertical-align:top;border-top: 1px solid black; border-left: 1px solid black;border-bottom: 1px solid black;border-right: 1px solid black;">
+                    <table style="width:100%;">
+                        <tr>
+                            <td colspan="4">Instruction</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" id="SPLINSTRUCTION"></td>
+                        </tr>
+                        <tr>
+                            <td>Laser</td>
+                            <td id="LESER"></td>
+                            <td>CVD</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>P Tilt</td>
+                            <td id="PTILT"></td>
+                            <td>FFA</td>
+                            <td id="FFA"></td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td colspan="4" style="vertical-align:top; border-bottom: 1px solid black;border-right: 1px solid black;">
+                    <table style="width:100%;">
+                        <tr>
+                            <td></td>
+                            <td>Prism 1</td>
+                            <td>Prism 2</td>
+                            <td>H.Dec</td>
+                            <td>V.Dec</td>
+                        </tr>
+                        <tr>
+                            <td>RE</td>
+                            <td><a id="REPRISM1" style="padding:5px"></a><a>/</a><a id="REPRISM1DIA" style="padding:5px"></a></td>
+                            <td><a id="REPRISM2" style="padding:5px"></a><a>/</a><a id="REPRISM2DIA" style="padding:5px"></a></td>
+                            <td id="REHDEC"></td>
+                            <td id="REVDEC"></td>
+                        </tr>
+                        <tr>
+                            <td>LE</td>
+                            <td><a id="LEPRISM1" style="padding:5px"></a><a>/</a><a id="LEPRISM1DIA" style="padding:5px"></a></td>
+                            <td><a id="LEPRISM2" style="padding:5px"></a><a>/</a><a id="LEPRISM2DIA" style="padding:5px"></a></td>
+                            <td id="LEHDEC"></td>
+                            <td id="LEVDEC"></td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td></td>
+            </tr>
+
+            <!-- <tr>
+                <td></td>
+                <td colspan="11" style="vertical-align:middle;text-align:center;">
+                    <img id="SHAPE" src="" />
+                </td>
+                <td></td>
+            </tr> -->
+        </table>
+
+    </div>
+
+    <!--anirudha-->
+    <script src="../../static/js/jquery.cookie.js"></script>
+    <script src="../../../static/js/core/jquery.3.2.1.min.js"></script>
+    <script>
+        var csrftoken = $.cookie('csrftoken');
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var data = localStorage.getItem("editdata");
+            // debugger;
+            var postdata = { oci_no: data };
+            $.ajax({
+                url: '/api_cast_oci/',
+                // url: '/api_cast_oci_Alise_optics/',
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    //#orderDate').innerHTML(data.result.Node.ORDERDATE);
+                    document.getElementById("orderDate").innerHTML = data.result.Node.ORDERDATE;
+                    document.getElementById("OCINUMBER").innerHTML = data.result.Node.OCINUMBER;
+                    document.getElementById("CUSTCODE").innerHTML = data.result.Node.CUSTCODE;
+                    document.getElementById("REFNUMBER").innerHTML = data.result.Node.REFNUMBER;
+
+                    document.getElementById("RESPHERE").innerHTML = data.result.Node.RESPHERE;
+                    document.getElementById("RECYLINDER").innerHTML = data.result.Node.RECYLINDER;
+                    document.getElementById("REAXIS").innerHTML = data.result.Node.REAXIS;
+                    document.getElementById("READDITION").innerHTML = data.result.Node.READDITION;
+                    document.getElementById("REPD").innerHTML = data.result.Node.REPD;
+                    document.getElementById("RENPD").innerHTML = data.result.Node.RENPD;
+
+                    document.getElementById("LESPHERE").innerHTML = data.result.Node.LESPHERE;
+                    document.getElementById("LECYLINDER").innerHTML = data.result.Node.LECYLINDER;
+                    document.getElementById("LEAXIS").innerHTML = data.result.Node.LEAXIS;
+                    document.getElementById("LEADDITION").innerHTML = data.result.Node.LEADDITION;
+                    document.getElementById("LEPD").innerHTML = data.result.Node.LEPD;
+                    document.getElementById("LENPD").innerHTML = data.result.Node.LENPD;
+
+
+
+                    document.getElementById("RECODE").innerHTML = data.result.Node.RECODE;
+                    document.getElementById("REDESC").innerHTML = data.result.Node.REDESC;
+                    document.getElementById("REPRISM1").innerHTML = data.result.Node.REPRISM1;
+                    document.getElementById("REPRISM1DIA").innerHTML = data.result.Node.REPRISM1DIA;
+                    document.getElementById("RECOMMDIA").innerHTML = data.result.Node.RECOMMDIA;
+
+                    document.getElementById("LECODE").innerHTML = data.result.Node.LECODE;
+                    document.getElementById("LEDESC").innerHTML = data.result.Node.LEDESC;
+                    document.getElementById("LEPRISM1").innerHTML = data.result.Node.LEPRISM1;
+                    document.getElementById("LEPRISM1DIA").innerHTML = data.result.Node.LEPRISM1DIA;
+                    document.getElementById("LECOMMDIA").innerHTML = data.result.Node.LECOMMDIA;
+
+                    document.getElementById("REREQDIA").innerHTML = data.result.Node.REREQDIA;
+                    document.getElementById("REBASE").innerHTML = data.result.Node.REBASE;
+                    document.getElementById("RECT").innerHTML = data.result.Node.RECT;
+                    document.getElementById("REET").innerHTML = data.result.Node.REET;
+
+                    document.getElementById("LEREQDIA").innerHTML = data.result.Node.LEREQDIA;
+                    document.getElementById("LEBASE").innerHTML = data.result.Node.LEBASE;
+                    document.getElementById("LECT").innerHTML = data.result.Node.LECT;
+                    document.getElementById("LEET").innerHTML = data.result.Node.LEET;
+
+
+                    document.getElementById("COATINGCOADE").innerHTML = data.result.Node.COATINGCOADE;
+                    document.getElementById("COATINGDESC").innerHTML = data.result.Node.COATINGDESC;
+                    document.getElementById("TINTCOADE").innerHTML = data.result.Node.TINTCOADE;
+                    document.getElementById("TINTDESC").innerHTML = data.result.Node.TINTDESC;
+
+                    document.getElementById("FRAMECODE").innerHTML = data.result.Node.FRAMECODE;
+                    document.getElementById("FRAMEDESC").innerHTML = data.result.Node.FRAMEDESC;
+                    document.getElementById("REBOXA").innerHTML = data.result.Node.BOXA;
+                    document.getElementById("REBOXB").innerHTML = data.result.Node.BOXB;
+                    document.getElementById("REDBL").innerHTML = data.result.Node.DBL;
+                    document.getElementById("LEBOXA").innerHTML = data.result.Node.BOXA;
+                    document.getElementById("LEBOXB").innerHTML = data.result.Node.BOXB;
+                    document.getElementById("LEDBL").innerHTML = data.result.Node.DBL;
+                    document.getElementById("SPLINSTRUCTION").innerHTML = data.result.Node.SPLINSTRUCTION;
+                },
+                data: JSON.stringify(postdata)
+            });
+            $.ajax({
+                url: 'http://192.168.0.127:80/ploat_data/',
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    // document.getElementById("SHAPE").innerHTML = data.shape.shape;
+                    var imgsrc64 = "data:image/png;base64," + data.shape.shape;
+                    $("#SHAPE").attr("src", imgsrc64);
+                },
+                data: JSON.stringify(postdata)
+            });
+        });
+
+    </script>
+</body>
+</html>

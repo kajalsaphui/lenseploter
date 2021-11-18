@@ -1,0 +1,102 @@
+﻿'use strict';
+appOnlineOrder.controller("ctrlLoginAuthentication", ['$rootScope', '$http', '$scope', 'vrxOnlineOrderFactory', 'customHeaderFactory', function ($rootScope, $http, $scope, vrxOnlineOrderFactory, customHeaderFactory) {    
+    $scope.credentials = {};
+    $scope.credentials.Submit = false;
+    $scope.credentials.ivalidentry = false;
+    var gStartDate = moment().subtract(7, 'days');
+    var gEndDate = moment();
+    sessionStorage.clear();
+    $scope.AuthenticateUser = function () {
+        var userinfo = $scope.credentials;
+        $scope.credentials.Submitted = true;
+        vrxOnlineOrderFactory.validateAuthenticateUser(userinfo, function (validationResult) {
+            if (validationResult !== undefined && validationResult !== null) {
+                if (validationResult.userrolecode.length > 0) {
+                    var filterData = {
+                        startdate: customHeaderFactory.toLocalDate(gStartDate),
+                        enddate: customHeaderFactory.toLocalDate(gEndDate),
+                        daterange: gStartDate.format('MMMM D, YYYY') + ' - ' + gEndDate.format('MMMM D, YYYY'),
+                        //customerid: validationResult.accountnumber === 'Admin' ? 0 : validationResult.idcustomer,
+                        customerid: validationResult.idcustomer,
+                        customername: validationResult.customername,
+                        accountnumber: validationResult.accountnumber,
+                        emailaddress: validationResult.email,
+                        contactno: validationResult.mobileno,
+                        customergroup: validationResult.customergroup,
+                        roledesc: validationResult.roledesc,
+                        rolehomepage: validationResult.rolehomepage,
+                        username: validationResult.username
+                    };
+                    window.sessionStorage.setItem("logininfo", validationResult);
+                    window.sessionStorage.setItem("customerid", validationResult.idcustomer);
+                    window.sessionStorage.setItem("customername", validationResult.customername);
+                    window.sessionStorage.setItem("accountnumber", validationResult.accountnumber);
+                    window.sessionStorage.setItem("customergroup", validationResult.customergroup);
+                    window.sessionStorage.setItem("filterdata", angular.toJson(filterData));
+                    $http.defaults.headers.common['Authorization'] = 'Basic ' + validationResult.usertoken;
+                    $scope.credentials.Submitted = false;
+                    //window.location.href = 'index_dashboard.html';
+                    vrxOnlineOrderFactory.getUserMenuByRole(userinfo.username, function (returnlist) {
+                        if (returnlist !== undefined && returnlist !== null) {
+                            window.sessionStorage.setItem("menulist",angular.toJson(returnlist));
+                            window.location.href = filterData.rolehomepage;
+                        }
+                    });                    
+                }
+                else {
+                    $scope.credentials.invalidentry = true;
+                    $scope.credentials.Submitted = false;
+                }
+            }
+            else {
+                //$rootScope.alertmsg = 'Invalid User Authentication.';
+                //angular.element(".alert-warning").fadeTo(2000, 500).slideUp(500, function () {
+                //    $scope.$apply();
+                //});
+                $scope.credentials.invalidentry = true;
+                $scope.credentials.Submitted = false;
+            }
+        });
+    };
+    $scope.AuthenticateUser_old = function () {
+        var userinfo = $scope.credentials;  
+        $scope.credentials.Submitted = true;
+        vrxOnlineOrderFactory.validateAuthenticateUser(userinfo, function (validationResult) {
+            if (validationResult !== undefined && validationResult !== null) {
+                if (validationResult.idcustomer > 0) {
+                    var filterData = {
+                        startdate: customHeaderFactory.toLocalDate(gStartDate),
+                        enddate: customHeaderFactory.toLocalDate(gEndDate),
+                        daterange: gStartDate.format('MMMM D, YYYY') + ' - ' + gEndDate.format('MMMM D, YYYY'),
+                        //customerid: validationResult.accountnumber === 'Admin' ? 0 : validationResult.idcustomer,
+                        customerid: validationResult.idcustomer,
+                        customername: validationResult.customername,
+                        accountnumber: validationResult.accountnumber,
+                        emailaddress: validationResult.email,
+                        contactno: validationResult.mobileno,
+                        customergroup: validationResult.customergroup
+                    };
+                    window.sessionStorage.setItem("customerid", validationResult.idcustomer);
+                    window.sessionStorage.setItem("customername", validationResult.customername);
+                    window.sessionStorage.setItem("accountnumber", validationResult.accountnumber);
+                    window.sessionStorage.setItem("customergroup", validationResult.customergroup);
+                    window.sessionStorage.setItem("filterdata", angular.toJson(filterData));
+                    $http.defaults.headers.common['Authorization'] = 'Basic ' + validationResult.usertoken;
+                    $scope.credentials.Submitted = false;
+                    window.location.href = 'index_dashboard.html';
+                }
+                else {
+                    $scope.credentials.invalidentry = true;
+                    $scope.credentials.Submitted = false;
+                }
+            }
+            else {
+                $rootScope.alertmsg = 'Invalid User Authentication.';
+                angular.element(".alert-warning").fadeTo(2000, 500).slideUp(500, function () {
+                    $scope.$apply();
+                });
+                $scope.credentials.Submitted = false;
+            }
+        });
+    };
+} ]);

@@ -1,0 +1,398 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>oci print</title>
+    <meta charset="utf-8" />
+    <!--<link rel="stylesheet" href="../../assets/css/style.css" />-->
+</head>
+<body>
+    <div>
+        <table class="grid" style="width:100%; padding:15px;" cellspacing="0">
+            <tr>
+                <td colspan="13"></td>
+
+            </tr>
+            <tr>
+                <td style="width:5%;"></td>
+                <td colspan="11" style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 12pt; color: #000000; text-align: left" nowrap>Order - Cum - Invoice</td>
+                <td style="width:5%;"></td>
+            </tr>
+            <tr>
+                <td colspan="13" height="10px"></td>
+
+            </tr>
+            
+            <tr>
+
+                <td style="width:5%;"></td>
+                <td colspan="3" style="width:30%;vertical-align:top; border-top: 1px solid black; border-left: 1px solid black;border-bottom: 1px solid black; border-right: 1px solid black;">
+                    <table style="width:100%;">
+                        <tr>
+                            <td colspan="4"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left; width:100%;" nowrap>GKB Rx Lens Pvt. Ltd</td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-indent: 0px; font-family: Arial; font-weight: 400; font-size: 9pt; color: #000000; text-align: left; width:100%;>" nowrap>Plot No. A-14, Infocity Sector 33-34</td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+
+                        </tr>
+                         <tr>
+                            <td colspan="2"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:20%;" nowrap>Order No :</td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:80%;" id="OCINUMBER"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:20%;" nowrap>Date :</td>
+
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:80%;" id="orderDate"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:20%;" nowrap>Customer :</td>
+
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:80%;" id="CUSTCODE"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:20%;" nowrap>Ref. No. :</td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:80%;" id="REFNUMBER"></td>
+                        </tr>
+
+                    </table>
+                </td>
+                <td colspan="8" style="width:60%; vertical-align:top; border-top: 1px solid black; border-right: 1px solid black;border-bottom: 1px solid black;">
+                    <table style="width:100%;height:100%;border-left:solid 1px balck;">
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:10%;" nowrap>Frame</td>
+                            <td id="FRAMECODE" style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:25%;" nowrap></td>
+
+
+                            <td  style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:10%;" nowrap>Type</td>
+                            <td id="FRAMEDESC" style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:25%;" nowrap></td>
+
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:10%;" nowrap>FBow ANG</td>
+
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:20%;" nowrap>Bridge <a id="DBL" style="padding:10px;"></a></td>
+
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:10%;" nowrap>RE Drill</td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:40%;" colspan="2" id="REDRILLE"></td>
+
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:10%;" nowrap>RE Drill</td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:40%;" colspan="2"  id="LEDRILLE"></td>
+                        </tr>
+                        <tr>
+
+                            <td></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>HBOX</u></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>VBOX</u></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>PD</u></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>HT</u></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap><u>ED</u></td>
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline; width:10%" nowrap>RE</td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:18%;" id="REHBOX"></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:18%;" id="REVBOX"></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:18%;" id="REPD"></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:18%;" id="REHT"></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:18%;" id="REED"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline; width:10%" nowrap>LE</td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:18%;" id="LEHBOX"></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:18%;" id="LEVBOX"></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:18%;" id="LEPD"></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:18%;" id="LEHT"></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:18%;" id="LEED"></td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="6"><hr /></td>
+
+
+                        </tr>
+                        <tr>
+                            <td  style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline; width:10%" nowrap>RE</td>
+                            
+                            <td colspan="5" style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:90%;" id="RECODE"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline; width:10%" nowrap>LE</td>
+                            
+                            <td colspan="5" style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:90%;" id="LECODE"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline; width:10%" nowrap>Tinting</td>
+                            <td colspan="5" style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:90%;"  id="TINTCOADE"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline; width:10%;" nowrap;>Coating</td>
+                            <td colspan="3" style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:70%;"  id="COATINGCOADE"></td>
+
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline; width:10%;" nowrap>RE QTY</td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:10%;"  id="REQTY"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline; width:10%;" nowrap>Fitting</td>
+                            <td colspan="3" style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:70%;"  id="FITTINGCODE"></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline; width:10%" nowrap>LE QTY</td>
+                            <td id="LEQTY"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left; font-style: underline; width:10%;" nowrap>Shield</td>
+                            <td colspan="5" style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:90%;" ></td>
+
+                        </tr>
+                    </table>
+
+                </td>
+                <td style="width:5%;"></td>
+            </tr>
+            <tr>
+            <td style="width:5%"></td>
+            
+            <td colspan="11"  style="width:90%; border-left: 1px solid black; border-right: 1px solid black; ">
+            <table style="width:100%;">
+            <tr>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: left;font-style: underline; widows:1%;" nowrap></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline; widows:9%;" nowrap><u>Bl.Dia</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline; widows:9%;" nowrap><u>Shape</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline; widows:9%;" nowrap><u>CRIB Dia</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline; widows:9%;" nowrap><u>Sph</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline; widows:9%;" nowrap><u>Cyl</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline; widows:9%;" nowrap><u>Axis</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline; widows:9%;" nowrap><u>Addn</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline; widows:9%;" nowrap><u>Base</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline; widows:9%;" nowrap><u>CT</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline; widows:9%;" nowrap><u>ET</u></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline; widows:9%;" nowrap><u>CORRIDOR</u></td>
+
+                
+            </tr>
+            <tr>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align: center; font-style: underline" nowrap>RE</td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="RECOMMDIA"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="RESHAPE"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="REREQDIA"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap  id="RESPHERE"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="RECYLINDER"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="REAXIS"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="READDITION"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="REBASE"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="RECT"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="REET"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="RECORLEN"></td>
+
+            </tr>
+            <tr>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align:center; font-style: underline" nowrap>LE</td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="LECOMMDIA"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="LESHAPE"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="LEREQDIA"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="LESPHERE"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="LECYLINDER"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="LEAXIS"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="LEADDITION"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="LEBASE"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="LECT"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="LEET"></td>
+                <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:9%;" nowrap id="RECORLEN"></td>
+                
+            </tr>
+            </table>
+            
+            </td>
+            
+            <td style="width:50%"></td>
+            </tr>
+
+            <tr>
+                <td style="width:5%;"></td>
+                <td colspan="7" style="vertical-align:top;border-top: 1px solid black; border-left: 1px solid black;border-bottom: 1px solid black;border-right: 1px solid black;">
+                    <table style="width:100%;">
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align:left; font-style: underline" colspan="4">Instruction</td>
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:100%;" colspan="4" id="SPLINSTRUCTION"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align:left; font-style: underline">Laser</td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:40%;" id="LESER"></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align:left; font-style: underline">CVD</td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:40%;"></td>
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align:left; font-style: underline">P Tilt</td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:40%;" id="PTILT"></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align:left; font-style: underline">FFA</td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: left;width:40%;" id="FFA"></td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td colspan="4" style="vertical-align:top; border-bottom: 1px solid black;border-right: 1px solid black;">
+                    <table style="width:100%;">
+                        <tr>
+                            <td></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align:center; font-style: underline; width:23.75%">Prism 1</td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align:center; font-style: underline; width:23.75%">Prism 2</td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align:center; font-style: underline; width:23.75%">H.Dec</td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align:center; font-style: underline; width:23.75%">V.Dec</td>
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align:left; font-style: underline; width:5%">RE</td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:23.75%;" nowrap><a id="REPRISM1" style="padding:5px"></a><a>/</a><a id="REPRISM1DIA" style="padding:5px"></a></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:23.75%;" nowrap><a id="REPRISM2" style="padding:5px"></a><a>/</a><a id="REPRISM2DIA" style="padding:5px"></a></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:23.75%;" id="REHDEC" nowrap></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:23.75%;" id="REVDEC" nowrap></td>
+                        </tr>
+                        <tr>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 10pt; color: #000000; text-align:left; font-style: underline;width:5%">LE</td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:23.75%;" nowrap><a id="LEPRISM1" style="padding:5px"></a><a>/</a><a id="LEPRISM1DIA" style="padding:5px"></a></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:23.75%;" nowrap><a id="LEPRISM2" style="padding:5px"></a><a>/</a><a id="LEPRISM2DIA" style="padding:5px"></a></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:23.75%;" nowrap id="LEHDEC"></td>
+                            <td style="text-indent: 0px; font-family: Arial; font-weight: 700; font-size: 9pt; color: #000000; text-align: center;width:23.75%;" nowrap id="LEVDEC"></td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td style="width:5%;"></td>
+            </tr>
+
+             <tr>
+                <td></td>
+                <td colspan="11" style="vertical-align:middle;text-align:center;">
+                    <img id="SHAPE" style="width:400px;height: 300px;"src="" />
+                </td>
+                <td></td>
+            </tr> 
+        </table>
+
+    </div>
+
+    <!--anirudha-->
+    <!-- <script src="../../static/js/jquery.cookie.js"></script> -->
+    <script src="../../../static/js/core/jquery.3.2.1.min.js"></script>
+    <script src="../../../static/js/jquery.cookie.js"></script>
+    <script>
+        var csrftoken = $.cookie('csrftoken');
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var data = localStorage.getItem("editdata");
+            // debugger;
+            var postdata = { oci_no: data};
+            $.ajax({
+                url: 'http://192.168.0.127:80/api_cast_oci/',
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    //#orderDate').innerHTML(data.result.Node.ORDERDATE);
+                    document.getElementById("orderDate").innerHTML = data.result.Node.ORDERDATE;
+                    document.getElementById("OCINUMBER").innerHTML = data.result.Node.OCINUMBER;
+                    document.getElementById("CUSTCODE").innerHTML = data.result.Node.CUSTCODE;
+                    document.getElementById("REFNUMBER").innerHTML = data.result.Node.REFNUMBER;
+
+                    document.getElementById("RESPHERE").innerHTML = data.result.Node.RESPHERE;
+                    document.getElementById("RECYLINDER").innerHTML = data.result.Node.RECYLINDER;
+                    document.getElementById("REAXIS").innerHTML = data.result.Node.REAXIS;
+                    document.getElementById("READDITION").innerHTML = data.result.Node.READDITION;
+                    document.getElementById("REPD").innerHTML = data.result.Node.REPD;
+                    document.getElementById("RENPD").innerHTML = data.result.Node.RENPD;
+
+                    document.getElementById("LESPHERE").innerHTML = data.result.Node.LESPHERE;
+                    document.getElementById("LECYLINDER").innerHTML = data.result.Node.LECYLINDER;
+                    document.getElementById("LEAXIS").innerHTML = data.result.Node.LEAXIS;
+                    document.getElementById("LEADDITION").innerHTML = data.result.Node.LEADDITION;
+                    document.getElementById("LEPD").innerHTML = data.result.Node.LEPD;
+                    document.getElementById("LENPD").innerHTML = data.result.Node.LENPD;
+
+
+
+                    document.getElementById("RECODE").innerHTML = data.result.Node.RECODE;
+                    document.getElementById("REDESC").innerHTML = data.result.Node.REDESC;
+                    document.getElementById("REPRISM1").innerHTML = data.result.Node.REPRISM1;
+                    document.getElementById("REPRISM1DIA").innerHTML = data.result.Node.REPRISM1DIA;
+                    document.getElementById("RECOMMDIA").innerHTML = data.result.Node.RECOMMDIA;
+
+                    document.getElementById("LECODE").innerHTML = data.result.Node.LECODE;
+                    document.getElementById("LEDESC").innerHTML = data.result.Node.LEDESC;
+                    document.getElementById("LEPRISM1").innerHTML = data.result.Node.LEPRISM1;
+                    document.getElementById("LEPRISM1DIA").innerHTML = data.result.Node.LEPRISM1DIA;
+                    document.getElementById("LECOMMDIA").innerHTML = data.result.Node.LECOMMDIA;
+
+                    document.getElementById("REREQDIA").innerHTML = data.result.Node.REREQDIA;
+                    document.getElementById("REBASE").innerHTML = data.result.Node.REBASE;
+                    document.getElementById("RECT").innerHTML = data.result.Node.RECT;
+                    document.getElementById("REET").innerHTML = data.result.Node.REET;
+
+                    document.getElementById("LEREQDIA").innerHTML = data.result.Node.LEREQDIA;
+                    document.getElementById("LEBASE").innerHTML = data.result.Node.LEBASE;
+                    document.getElementById("LECT").innerHTML = data.result.Node.LECT;
+                    document.getElementById("LEET").innerHTML = data.result.Node.LEET;
+
+
+                    document.getElementById("COATINGCOADE").innerHTML = data.result.Node.COATINGCOADE;
+                    document.getElementById("COATINGDESC").innerHTML = data.result.Node.COATINGDESC;
+                    document.getElementById("TINTCOADE").innerHTML = data.result.Node.TINTCOADE;
+                    document.getElementById("TINTDESC").innerHTML = data.result.Node.TINTDESC;
+
+                    document.getElementById("FRAMECODE").innerHTML = data.result.Node.FRAMECODE;
+                    document.getElementById("FRAMEDESC").innerHTML = data.result.Node.FRAMEDESC;
+                    document.getElementById("REBOXA").innerHTML = data.result.Node.BOXA;
+                    document.getElementById("REBOXB").innerHTML = data.result.Node.BOXB;
+                    document.getElementById("REDBL").innerHTML = data.result.Node.DBL;
+                    document.getElementById("LEBOXA").innerHTML = data.result.Node.BOXA;
+                    document.getElementById("LEBOXB").innerHTML = data.result.Node.BOXB;
+                    document.getElementById("LEDBL").innerHTML = data.result.Node.DBL;
+                    document.getElementById("SPLINSTRUCTION").innerHTML = data.result.Node.SPLINSTRUCTION;
+                },
+                data: JSON.stringify(postdata)
+            });
+            $.ajax({
+                url: 'http://192.168.0.127:80/ploat_data/',
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    // document.getElementById("SHAPE").innerHTML = data.shape.shape;
+                    var imgsrc64 = "data:image/png;base64," + data.shape.shape;
+                    $("#SHAPE").attr("src", imgsrc64);
+                },
+                data: JSON.stringify(postdata)
+            });
+        });
+
+    </script>
+</body>
+</html>

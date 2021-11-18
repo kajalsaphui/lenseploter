@@ -1,0 +1,280 @@
+﻿'use strict';
+var msgSaveConfirmation = 'Are you sure to save the changes?',
+    msgCloseConfirmation = 'Are you sure to close the form?',
+    msgDeleteConfirmation = 'Are you sure to delete the current record?',
+    msgsavedMessage = 'Data saved successfully!',
+    msgsavedMessage_strong = '<b>Data saved successfully!</b>',
+    msgUpdatedMessage = 'Data Updated successfully!',
+    msgFailureMessage = 'Unable to save data!',
+    msgDeleteMessage = 'Data Deleted Succesfully',
+    msgDeleteFailureMessage = 'Unable to delete data!',
+    msgDublicateForCode = "Unable to save data! Code is already exist.",
+    msgDublicateForDescription = "Unable to save data! Description is already exist.",
+    msgGroupOneChkBx = "Select one check box at least.",
+    msgPrintConfirmation = "Are you sure to Print?",
+    msgNoSearchRecord = "No data found! <br>Please verify search criteria and try again.",
+    msgNoSearchCriteria = "Please Select at least one search criteria and try again.",
+    msgRegistrationCardPrintConfirmation = "Are you sure to Print?",
+    msgDownloadConfirmation = 'Are you sure to download the current record?',
+    msgInvalidDateRange = 'Invalid date range!',
+    monthValueIndex = 0,
+    dayValueIndex = 1,
+    yearValueIndex = 2,
+    dateSeparator = "/",
+    timeSeparator = ":";
+var optionsOrderType = [{ ID: 1, Desc: "Uncut Lens" }, { ID: 2, Desc: "Lens with Remote Edge" }, { ID: 3, Desc: "Lens + Frame" }, { ID: 4, Desc: "Frame to come" }];
+var optionsFrameType = [{ ID: 1.1, Desc: "Plastic" }, { ID: 2.1, Desc: "Metal" }, { ID: 3.3, Desc: "Nylor" }, { ID: 3.2, Desc: "Rimless" }];
+var optionsFocality = [{ ID: 1, Desc: "Single-Vision", Code: "SV", HasAddition: false }, { ID: 2, Desc: "Bifocal", Code: "BIF", HasAddition: true }, { ID: 3, Desc: "Multifocal", Code: "MF", HasAddition: true }];
+var optionsMaterial = [{ ID: 1, Desc: "Plastic" }, { ID: 2, Desc: "Polycarbonate" }, { ID: 3, Desc: "Glass" }, { ID: 4, Desc: "Trilogy" }];
+var optionsOrderStatus = [{ ID: 0, Status: '- ALL STATUS -' }, { ID: 1, Status: 'ORDERED' }, { ID: 2, Status: 'CREATED' }, { ID: 3, Status: 'INVENTORY' }, { ID: 4, Status: 'SURFACING' }, { ID: 5, Status: 'COATING' },
+    { ID: 6, Status: 'REPROCESS' }, { ID: 7, Status: 'SURFACING' }, { ID: 8, Status: 'TINTING' }, { ID: 9, Status: 'DISPATCH SEC' }, { ID: 10, Status: 'DISPATCH' },
+    { ID: 11, Status: 'DELIVERED' }, { ID: 12, Status: 'OTHERS' }];
+var optionsFrameShape = [{ ID: 1, Desc: "1.png", Code: "1" }, { ID: 2, Desc: "2.png", Code: "2" }, { ID: 3, Desc: "3.png", Code: "3" }, { ID: 4, Desc: "4.png", Code: "4" },
+    { ID: 4, Desc: "4.png", Code: "4" }, { ID: 5, Desc: "5.png", Code: "5" }, { ID: 6, Desc: "6.png", Code: "6" }, { ID: 7, Desc: "7.png", Code: "7" }, { ID: 8, Desc: "8.png", Code: "8" },
+    { ID: 9, Desc: "9.png", Code: "9" }, { ID: 10, Desc: "10.png", Code: "10" }, { ID: 11, Desc: "11.png", Code: "11" }, { ID: 12, Desc: "12.png", Code: "12" },
+    { ID: 13, Desc: "13.png", Code: "13" }, { ID: 14, Desc: "14.png", Code: "14" }];
+function isEmpty(value) {
+    return angular.isUndefined(value) || value === '' || value === null || value !== value;
+}
+function doesFileExist(urlToFile) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('HEAD', urlToFile, false);
+    xhr.send();
+
+    if (xhr.status == "404") {
+        return false;
+    } else {
+        return true;
+    }
+}
+var appOnlineOrder = angular.module("appOnlineOrder", ['ui.bootstrap', 'cgBusy', 'angular.filter', 'ui.router', 'ngSanitize', 'angular-loading-bar', 'uiBreadcrumbs', 'ui.router.state.events']);
+appOnlineOrder.factory("customHeaderFactory", ['$rootScope', function ($rootScope) {
+    var headerFactory = {};
+    headerFactory.request = function (config) {
+        //config.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
+        //config.headers['auth-token'] = "abcdefghijklmnopqrstuvwxyz.1234567890";
+        //config.requestTimestamp = new Date().getTime();
+        //$rootScope.showLoader = true;
+        return config;
+    };
+    headerFactory.response = function (response) {
+        //response.config.responseTimestamp = new Date().getTime();
+        //$rootScope.showLoader = false;
+        return response;
+    };
+    headerFactory.dmy2mdy = function (dmyDate) {
+        try {
+            var dt = dmyDate.split("/");
+            var serverDate = dt[1] + "/" + dt[0] + "/" + dt[2];
+            return serverDate.replace(/[^ -~]/g, '');
+        }
+        catch (er) {
+            throw er;
+        }
+    };
+    headerFactory.toLocalDate = function (utcDateTime) {
+        try {
+            var date = new Date();
+            var offsetms = date.getTimezoneOffset() * 60 * 1000;
+            var serverDate = new Date(utcDateTime);
+            serverDate = new Date(serverDate.valueOf() - offsetms);
+            return serverDate.toLocaleDateString('en-GB').replace(/[^ -~]/g, '');
+        }
+        catch (er) {
+            throw er;
+        }
+    };
+    headerFactory.toLocalDateTime = function (utcDateTime, callbackvalue) {
+        try {
+            var date = new Date();
+            var offsetms = date.getTimezoneOffset() * 60 * 1000;
+            var serverDate = new Date(utcDateTime);
+            serverDate = new Date(serverDate.valueOf() - offsetms);
+            return callbackvalue(serverDate.toLocaleString('en-GB').replace(/[^ -~]/g, ''));
+        }
+        catch (er) {
+            throw er;
+        }
+    };
+    headerFactory.getLocalDate = function (callbackvalue) {
+        try {
+            var currentdate = new Date();
+            var browserdate = new Date();
+            var offsetms = browserdate.getTimezoneOffset() * 60 * 1000;
+            var serverDate = new Date(currentdate);
+            serverDate = new Date(serverDate.valueOf() - offsetms);
+            currentLocalUTCdt = serverDate.toDateString() + " " + serverDate.toTimeString().split(" ")[0];
+            var localUtcDateParts = {};
+            if (currentLocalUTCdt !== undefined) {
+                var localDT = new Date(currentLocalUTCdt);
+                var localDD = localDT.getDate() > 9 ? localDT.getDate() : "0" + localDT.getDate();
+                var localMM = (localDT.getMonth() + 1) > 9 ? (localDT.getMonth() + 1) : "0" + (localDT.getMonth() + 1);
+                var localHOU = localDT.getHours() > 9 ? localDT.getHours() : "0" + localDT.getHours();
+                var localMIN = localDT.getMinutes() > 9 ? localDT.getMinutes() : "0" + localDT.getMinutes();
+                var localSEC = localDT.getSeconds() > 9 ? localDT.getSeconds() : "0" + localDT.getSeconds();
+                var localYY = localDT.getFullYear();
+                localUtcDateParts.MM = localMM;
+                localUtcDateParts.DD = localDD;
+                localUtcDateParts.YY = localYY;
+                localUtcDateParts.HOU = localHOU;
+                localUtcDateParts.MIN = localMIN;
+                localUtcDateParts.SEC = localSEC;
+            }
+            return callbackvalue(localUtcDateParts);
+        }
+        catch (er) {
+            throw er;
+        }
+    };
+    return headerFactory;
+}]);
+appOnlineOrder.config(['$httpProvider', 'cfpLoadingBarProvider', function ($httpProvider, cfpLoadingBarProvider) {
+    //$httpProvider.interceptors.push('customHeaderFactory');
+    //$httpProvider.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
+    //$httpProvider.defaults.headers.common['Authorization'] = 'Basic YW5keTpwYXNzd29yZA==';
+    cfpLoadingBarProvider.includeBackdrop = true;
+    //$httpProvider.interceptors.push('customHeaderFactory');
+}]);
+appOnlineOrder.run(['$rootScope', '$timeout', '$state', '$http', function ($rootScope, $timeout, $state, $http) {
+    $rootScope.layout = {};
+    $rootScope.layout.loading = false;
+    $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
+    $rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {
+        angular.forEach($http.pendingRequests, function (request) {
+            if (request.cancel && request.timeout) {
+                request.cancel.resolve();
+            }
+        });
+        if (toState.data) {
+            var stateDetail = {};
+            stateDetail.fromState = fromState;
+            stateDetail.toState = toState;
+            if (toState.data.requireLogin === true && $rootScope.currentUser === undefined) {
+                e.preventDefault();
+                window.location.href = 'index.html';
+            }
+            if (toState.data.buttongroupstate) {                
+                $rootScope.$broadcast('onChangeTargetState', stateDetail);
+            }            
+        }
+    });
+    $rootScope.$on('$locationChangeStart', function (event, toState, $state) {
+        //cfpLoadingBar.start();
+        $rootScope.showLoader = true;
+    });
+    $rootScope.$on('$locationChangeSuccess', function () {
+        //cfpLoadingBar.complete();
+        $rootScope.showLoader = false;
+    });    
+    $rootScope.$on('$routeChangeStart', function () {
+        //show loading gif
+        $timeout(function () {
+            $rootScope.layout.loading = true;
+        });
+    });
+    $rootScope.$on('$routeChangeSuccess', function () {
+        //hide loading gif
+        $timeout(function () {
+            $rootScope.layout.loading = false;
+        }, 200);
+    });
+}]);
+function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null;
+}
+function padLeft(str, max) {
+    str = str.toString();
+    return str.length < max ? padLeft("0" + str, max) : str;
+}
+function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
+    //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
+    var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
+
+    var CSV = '';
+    //Set Report title in first row or line
+
+    CSV = ReportTitle + '\r\n\n';
+
+    //This condition will generate the Label/Header
+    if (ShowLabel) {
+        var row = "";
+
+        //This loop will extract the label from 1st index of on array
+        for (var index in arrData[0]) {
+
+            //Now convert each value to string and comma-seprated
+            row += index + ',';
+        }
+
+        row = row.slice(0, -1);
+
+        //append Label row with line break
+        CSV += row + '\r\n';
+    }
+
+    //1st loop is to extract each row
+    for (var i = 0; i < arrData.length; i++) {
+        var row = "";
+
+        //2nd loop will extract each column and convert it in string comma-seprated
+        for (var index in arrData[i]) {
+            row += '"=""' + arrData[i][index] + '"""' + ',';
+        }
+
+        row.slice(0, row.length - 1);
+
+        //add a line break after each row
+        CSV += row + '\r\n';
+    }
+
+    if (CSV == '') {
+        alert("Invalid data");
+        return;
+    }
+
+    //Generate a file name
+    var fileName = "MyReport_";
+    //this will remove the blank-spaces from the title and replace it with an underscore
+    fileName = ReportTitle.replace(/ /g, "_");
+
+    //var blob = new Blob([CSV], { 'type': 'application\/octet-stream' });
+
+    //Initialize file format you want csv or xls
+    var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+    //window.open(uri, "_self");
+    // Now the little tricky part.
+    // you can use either>> window.open(uri);
+    // but this will not work in some browsers
+    // or you will not get the correct file extension    
+
+    //this trick will generate a temp <a /> tag
+    var link = document.createElement("a");
+
+    link.href = uri;
+    //link.href = window.URL.createObjectURL(blob);
+
+    //set the visibility hidden so it will not effect on your web-layout
+    //link.style = "visibility:hidden";
+    link.download = fileName + ".csv";
+    if (navigator.msSaveBlob) { // IE 10+ 
+        navigator.msSaveOrOpenBlob(new Blob([CSV], { type: 'text/csv;charset=utf-8;' }), link.download);
+    }
+    //this part will append the anchor tag and remove it after automatic click
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+function DownloadPDF1(fileName) {
+    var uri = 'data:application/pdf,' + escape(fileName.replace("/",""));
+    var link = document.createElement("a");
+
+    link.href = uri;
+    link.download = fileName + ".pdf";
+    if (navigator.msSaveBlob) { // IE 10+ 
+        navigator.msSaveOrOpenBlob(new Blob([PDF], { type: 'application/pdf;' }), link.download);
+    }
+    //this part will append the anchor tag and remove it after automatic click
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}

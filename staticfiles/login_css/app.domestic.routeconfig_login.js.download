@@ -1,0 +1,27 @@
+﻿'use strict';
+appOnlineOrder.config(function ($stateProvider, $urlRouterProvider) {
+    /*
+    $urlRouterProvider.otherwise('/login');
+    $stateProvider.state('login', {
+        url: '/login',
+        templateUrl: 'Views/userlogin.html',
+        controller: 'ctrlLoginAuthentication'
+    });
+    */
+    $urlRouterProvider.otherwise('/online/login');
+    $stateProvider.state('start', {
+        url: '/online',
+        templateUrl: 'Views/userlogin.html',
+        controller: 'ctrlLoginAuthentication'
+    }).state('start.login', {
+        url: '/login',
+        templateUrl: 'template/login.html'
+    }).state('start.faq', {
+        url: '/faq',
+        templateUrl: 'template/faq.html'
+    }).state('start.knowmore', {
+        url: '/knowmore',
+        templateUrl: 'template/knowmore.html',
+        controller: 'ctrlLoginAuthentication'
+    });    
+});

@@ -1,0 +1,395 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<title>Order</title>
+
+	<!--<meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+	<!--<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />-->
+	<!--<link rel="icon" href="../../static/img/icon.ico" type="image/x-icon"/>-->
+	<!-- Fonts and icons -->
+	<script src="../../static/js/plugin/webfont/webfont.min.js"></script>
+	<script>
+		WebFont.load({
+			google: { "families": ["Lato:300,400,700,900"] },
+			custom: { "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../static/css/fonts.min.css'] },
+			active: function () {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+	<!-- CSS Files -->
+	
+	<link rel="stylesheet" href="../../static/css/min.css" />
+	<link rel="stylesheet" href="../../static/css/atlantis.min.css" />
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link rel="stylesheet" href="../../static/css/demo.css" />
+</head>
+<body>
+	<div class="wrapper ">
+		<div class="main-header">
+			<!-- Logo Header -->
+			<div class="logo-header" data-background-color="grey">
+
+				<a href="login.html" class="logo">
+					<img src="../../static/img/vrxlogo.png" alt="VisionRx lab" style="width:100px;height:50px; padding-top:10px;" />
+				</a>
+
+
+
+			</div>
+			<!-- End Logo Header -->
+			<!-- Navbar Header -->
+			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+
+				<div class="container-fluid">
+					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+
+						<!-- Profile top left menu-->
+						<li class="nav-item dropdown hidden-caret">
+							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+								<div class="avatar-sm">
+									<img src="../../static/img/user.jpg" alt="..." class="avatar-img rounded-circle" />
+								</div>
+							</a>
+							<ul class="dropdown-menu dropdown-user animated fadeIn">
+								<div class="dropdown-user-scroll scrollbar-outer">
+								</div>
+								<li>
+									<div class="user-box">
+										<div class="avatar-lg"><img src="../../static/img/user.jpg" alt="image profile" class="avatar-img rounded" /></div>
+										<div class="u-text">
+											<h4>Customer name</h4>
+											<p class="text-muted">hello@example.com</p>
+											<a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<!--<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="#">My Profile</a>
+									<a class="dropdown-item" href="#">My Balance</a>
+									<a class="dropdown-item" href="#">Inbox</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="#">Account Setting</a>-->
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="logout">Logout</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+			</nav>
+			<!-- End Navbar -->
+		</div>
+
+
+
+
+
+
+		<div class="content">
+			<div class="page-inner" style="margin-top:20px">
+
+				<div class="card">
+					<!-- <div class="card-header">
+						<div class="card-title">Mini order(s) report</div>
+					</div> -->
+					<div class="card-body">
+
+						<div class="form-control ">
+							<table class="table-hover container-fluid">
+								<tr>
+
+									<td>
+										<div class="form-group">
+											<div class="input-icon">
+												<input type="text" class="form-control" name="ref" placeholder="Reference customer code" id="ref_code" />
+												<span class="input-icon-addon">
+													<i class="fa fa-search"></i>
+												</span>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="form-group">
+											<div class="input-icon">
+												<input type="text" class="form-control" name="oci" placeholder="OCI Number" id="oci_no" />
+												<span class="input-icon-addon">
+													<i class="fa fa-search"></i>
+												</span>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="form-group">
+											<div class="input-icon">
+												<input type="text" class="form-control" name="order" placeholder="Order Number" id="order_no" />
+												<span class="input-icon-addon">
+													<i class="fa fa-search"></i>
+												</span>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="form-group">
+											<div class="input-icon">
+												<input type="text" class="form-control" name="date" placeholder="dd-mm-yyyy" id="order_date" />
+												<span class="input-icon-addon">
+													<i class="fa fa-search"></i>
+												</span>
+											</div>
+										</div>
+									</td>
+									<td>
+										<div class="col-10">
+											<button class="btn btn-box-tool ng-hide btn-secondary" type="button" ng-hide="activeTab==&#39;G&#39; " onclick="onOCISearch()">
+												<i class="fa fa-search"></i>&nbsp;&nbsp;Search
+											</button>
+										</div>
+									</td>
+								</tr>
+
+							</table>
+
+
+
+							<h5>Please fill up 2 text box.....</h5>
+
+						</div>
+						<div style="margin-top:20px"></div>
+						<div class="table-responsive" id="tbl">
+							<table id="basic-datatables" class="display table table-striped table-hover" style="cursor: pointer;">
+								<thead>
+									<tr>
+										<th>Customer Code</th>
+										<th>Application Name</th>
+										<th>Order Number</th>
+										<th>Oci Number</th>
+										<th>Cust. Name</th>
+										<th>Order Date</th>
+									</tr>
+								</thead>
+								<!-- <tfoot>
+									<tr>
+										<th>Customer Code</th>
+										<th>Application Name</th>
+										<th>Order Number</th>
+										<th>Oci Number</th>
+										<th>Cust. Name</th>
+										<th>Order Date</th>
+									</tr>
+								</tfoot> -->
+
+							</table>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<!--   Core JS Files   -->
+	<script src="../../static/js/core/jquery.3.2.1.min.js"></script>
+	<script src="../../static/js/core/popper.min.js"></script>
+	<script src="../../static/js/core/bootstrap.min.js"></script>
+	<!-- jQuery UI -->
+	<script src="../../static/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="../../static/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+	<!-- jQuery Scrollbar -->
+	<script src="../../static/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+	<!-- Datatables -->
+	<script src="../../static/js/plugin/datatables/datatables.min.js"></script>
+	<!--Cookie-->
+	<script src="../../static/js/jquery.cookie.js"></script>
+	<!-- Atlantis JS -->
+	<script src="../../static/js/atlantis.min.js"></script>
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="../../static/js/setting-demo2.js"></script>
+	<!-- csrf_token -->
+	<script>
+		var csrftoken = $.cookie('csrftoken');
+
+		function csrfSafeMethod(method) {
+			// these HTTP methods do not require CSRF protection
+			return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+		}
+
+		$.ajaxSetup({
+			beforeSend: function (xhr, settings) {
+				if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+					xhr.setRequestHeader("X-CSRFToken", csrftoken);
+				}
+			}
+		});
+	</script>
+	<!-- Datatables -->
+	<script>
+		
+		$(document).ready(function () {
+			$("#tbl").hide();
+            $("button").click(function () {
+                $("#tbl").show(1000);
+            });
+			
+
+			
+
+			$('#basic-datatables').on('click', 'tr', function () {
+				var data = table.row($(this)).data();
+				localStorage.setItem("editdata1", data.oci_no);
+				localStorage.setItem("editdata2", data.customer_code);
+				window.location.href = "prescription_labs";
+			});
+
+
+			$('#multi-filter-select').DataTable({
+				"pageLength": 5,
+				initComplete: function () {
+					this.api().columns().every(function () {
+						var column = this;
+						var select = $('<select class="form-control"><option value=""></option></select>')
+							.appendTo($(column.footer()).empty())
+							.on('change', function () {
+								var val = $.fn.dataTable.util.escapeRegex(
+									$(this).val()
+								);
+
+								column
+									.search(val ? '^' + val + '$' : '', true, false)
+									.draw();
+							});
+
+						column.data().unique().sort().each(function (d, j) {
+							select.append('<option value="' + d + '">' + d + '</option>')
+						});
+					});
+				}
+			});
+
+			// Add Row
+			$('#add-row').DataTable({
+				"pageLength": 5,
+			});
+
+			var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
+			$('#addRowButton').click(function () {
+				$('#add-row').dataTable().fnAddData([
+					$("#addName").val(),
+					$("#addPosition").val(),
+					$("#addOffice").val(),
+					action
+				]);
+				$('#addRowModal').modal('hide');
+
+			});
+		});
+		
+        function onOCISearch() {
+			var oci = $('#oci_no').val();
+            var ref = $('#ref_code').val();
+			
+            var postdata = { oci_no: oci,rf_customer_code: ref };
+            $.ajax({
+                url: '/dashboard_oci/',
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+					alert(data.result.Node);
+                    table = $('#basic-datatables').DataTable({
+                        data: data.result.Node,
+                        columns: [{ data: 'customer_code' },
+                        { data: 'Application_name' },
+                        { data: 'order_nuber' },
+                        { data: 'oci_no' },
+                        { data: 'cast_name' },
+                        { data: 'order_date' }]
+                    });
+					
+                },
+                data: JSON.stringify(postdata)
+            });
+        }
+		
+	</script>
+</body>
+</html>
+
+
+
+
+<!-- 
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+{%  include 'accounts/status.html' %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>CUSTOMERS:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a>
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Customer</th>
+					<th>Phone</th>
+				</tr>
+
+				{% for customer in customers %}
+					<tr>
+						<td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">View</a></td>
+						<td>{{customer.application_name}}</td>
+						<td>{{customer.castomer_code}}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>LAST 5 ORDERS</h5>
+		<hr>
+		<div class="card card-body">
+			
+			<table class="table table-sm">
+				<tr>
+					<th>Product</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+				{% for order in orders %}
+					<tr>
+						<td>{{order.product}}</td>
+						<td>{{order.date_created}}</td>
+						<td>{{order.status}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Update</a></td>
+
+						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Delete</a></td>
+
+					</tr>
+				{% endfor %}
+
+		
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %} -->

@@ -1,0 +1,607 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Prescription</title>
+
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+    <!--<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />-->
+    <!--<link rel="icon" href="../../../../static/img/icon.ico" type="image/x-icon"/>-->
+    <!-- Fonts and icons -->
+    <script src="../../static/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+        WebFont.load({
+            google: { "families": ["Lato:300,400,700,900"] },
+            custom: { "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../../../static/css/fonts.min.css'] },
+            active: function () {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../static/css/min.css" />
+    <link rel="stylesheet" href="../../static/css/atlantis.min.css" />
+    <link rel="stylesheet" href="../../static/css/demo.css" />
+    <link rel="stylesheet" href="../../static/css/style.css" />
+
+    <!--<link rel="stylesheet" href="static/css/min.css">
+    <link rel="stylesheet" href="static/css/atlantis.min.css">
+    <link rel="stylesheet" href="static/css/demo.css">
+    <<link rel="stylesheet" href="static/css/style.css">-->
+
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="main-header">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="blue2">
+
+                <a href="/" class="logo">
+                    <img src="../../static/img/vrxlogo.png" alt="VisionRx lab" style="width:100px;height:50px; padding-top:10px;" />
+                </a>
+                
+                
+            </div>
+            <!-- End Logo Header -->
+            <!-- Navbar Header -->
+            <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+
+                <div class="container-fluid">
+
+                    <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+
+
+                        <li class="nav-item dropdown hidden-caret">
+                            <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+                                <i class="fas fa-layer-group"></i>
+                            </a>
+                            <div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
+                                <div class="quick-actions-header">
+                                    <span class="title mb-1">Quick Actions</span>
+                                    <span class="subtitle op-8">Shortcuts</span>
+                                </div>
+                                <div class="quick-actions-scroll scrollbar-outer">
+                                    <div class="quick-actions-items">
+                                        <div class="row m-0">
+                                            <a class="col-6 col-md-4 p-0" href="/">
+                                                <div class="quick-actions-item">
+                                                    <i class="flaticon-home"></i>
+                                                    <span class="text">Home</span>
+                                                </div>
+                                            </a>
+                                            <a class="col-6 col-md-4 p-0" href="#" data-toggle="modal" data-target="#exampleModal">
+                                                <div class="quick-actions-item">
+                                                    <i class="flaticon-shapes"></i>
+                                                    <span class="text">View Shape</span>
+                                                </div>
+                                            </a>
+                                            <a class="col-6 col-md-4 p-0" target="_blank" href="oci_print">
+                                                <div class="quick-actions-item">
+                                                    <i class="fa fa-print"></i>
+                                                    <span class="text">Print</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+							<a id="USERNAME_TOP" style="color:white;padding-right:5px;"></a>
+						</li>
+                        <!-- Profile top left menu-->
+                        <li class="nav-item dropdown hidden-caret">
+                            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                                <div class="avatar-sm">
+                                    <img src="../../static/img/user.jpg" alt="..." class="avatar-img rounded-circle" />
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user animated fadeIn">
+                                <div class="dropdown-user-scroll scrollbar-outer">
+                                    <li>
+                                        <div class="user-box">
+                                            <div class="avatar-lg"><img src="../../static/img/user.jpg" alt="image profile" class="avatar-img rounded" /></div>
+                                            <div class="u-text">
+                                                <h4 id = "USERNAME">Customer name</h4>
+                                                <p id= "EMAIL" class="text-muted">Email</p>
+                                                <!-- <a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a> -->
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <!--<div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">My Profile</a>
+                                        <a class="dropdown-item" href="#">My Balance</a>
+                                        <a class="dropdown-item" href="#">Inbox</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Account Setting</a>-->
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="logout">Logout</a>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+
+
+
+                    </ul>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+        </div>
+
+
+        <div class="content">
+            <!-- <div class="page-inner"> -->
+            <!-- <h4 class="page-title">Tables</h4>	 -->
+            <!-- body -->
+            <!-- <div> -->
+
+            <div style="padding-top: 15px;padding-left:15px;padding-right:15px;">
+                <fieldset>
+					
+                    <!--<legend>Order Sheet from </legend>-->
+                    <div style="width: 100%; text-align: right; font-size: 11px;">
+                        <b>OCI Number:<a style="padding-left:10px;" id="OCINUMBER"></a></b>
+                    </div>
+                    <div style="width: 100%; text-align: right; font-size: 11px;">
+                        <b>
+                            Order No.: <a style="padding-left:10px;" id="REFNUMBER"></a>
+                        </b>
+                    </div>
+
+                    <div style="width: 100%; text-align: right; font-size: 11px;">
+                        <b>Cust. Code:<a style="padding-left:10px;" id="CUSTCODE"></a>
+
+                        </b>
+
+                    </div>
+                    <div style="width: 100%; text-align: right; font-size: 11px;">
+                        <b>Order Date:<a style="padding-left:10px;" id="orderDate"></a>
+
+                        </b>
+
+                    </div>
+                </fieldset>
+            </div>
+            <div style="padding-top: 20px;padding-left:15px;padding-right:15px;">
+                <fieldset>
+                    <legend>Prescription Details</legend>
+                    <table class="grid">
+                        <tr>
+                            <th> </th>
+                            <th>Bl.Dia</th>
+                            <th>CRIB Dia</th>
+                            <th>Sph</th>
+                            <th>Cyl</th>
+                            <th>Axis</th>
+                            <th>Addn</th>
+                            <th>Prism 1</th>
+                            <th>Prism 2</th>
+                            <th>Base</th>
+                            <th>CT</th>
+                            <th>ET</th>
+                            <th>H.Dec</th>
+                            <th>V.Dec</th>
+                        </tr>
+                        <tr>
+                            <th><b>Right Eye</b></th>
+                            <td id="RECOMMDIA"></td>
+                            <td id="REREQDIA"></td>
+                            <td id="RESPHERE"></td>
+                            <td id="RECYLINDER"></td>
+                            <td id="REAXIS"></td>
+                            <td id="READDITION"></td>
+                            <td><a id="REPRISM1"></a><a id="REPRISM1DIA"></a></td>
+                            <td><a id="REPRISM2"></a><a id="REPRISM2DIA"></a></td>
+                            <td id="REBASE"></td>
+                            <td id="RECT"></td>
+                            <td id="REET"></td>
+                            <td id="REHEDEC"></td>
+                            <td id="REVDEC"></td>
+                        </tr>
+                        <tr>
+                            <th>Left Eye</th>
+                            <td id="LECOMMDIA"></td>
+                            <td id="LEREQDIA"></td>
+                            <td id="LESPHERE"></td>
+                            <td id="LECYLINDER"></td>
+                            <td id="LEAXIS"></td>
+                            <td id="LEADDITION"></td>
+                            <td><a id="LEPRISM1"></a><a id="LEPRISM1DIA"></a></td>
+                            <td><a id="LEPRISM2"></a><a id="LEPRISM2DIA"></a></td>
+                            <td id="LEBASE"></td>
+                            <td id="LECT"></td>
+                            <td id="LEET"></td>
+                            <td id="LEHEDEC"></td>
+                            <td id="LEVDEC"></td>
+
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
+            <div style="padding-top: 20px;padding-left:15px;padding-right:15px;">
+                <fieldset>
+                    <legend>Lens Details</legend>
+                    <table class="grid">
+                        <tr>
+                            <th>
+                            </th>
+                            <th>Lens Code</th>
+                            <th>Lens Desc.</th>
+                            <th>Coat.</th>
+                            <th>Coat. Desc.</th>
+                            <th>Tint Code</th>
+                            <th>Tint Desc.</th>
+                        </tr>
+                        <tr>
+                            <th nowrap="nowrap">Right Eye</th>
+                            <td id="RECODE"></td>
+                            <td id="REDESC"></td>
+                            <td nowrap="nowrap"><a id="RECOATINGCOADE"></a></td>
+                         
+                            <td nowrap="nowrap"><a id="RECOATINGDESC"></a></td>
+                            
+                            <td nowrap="nowrap"><a id="RETINTCOADE"></a></td>
+                            
+                            <td nowrap="nowrap"><a id="RETINTDESC"></a></td>
+                            
+                        </tr>
+                        <tr>
+                            <th nowrap="nowrap">Left Eye</th>
+                            <td nowrap="nowrap" id="LECODE"></td>
+                            <td nowrap="nowrap" id="LEDESC"></td>
+                            <td nowrap="nowrap"><a id="LECOATINGCOADE"></a></td>
+                            <td nowrap="nowrap"><a id="LECOATINGDESC"></a></td>
+                            <td nowrap="nowrap"><a id="LETINTCOADE"></a></td>
+                            <td nowrap="nowrap"><a id="LETINTDESC"></a></td>
+                            <!--<td nowrap="nowrap" colspan="2"><a id="A1"></a></td>
+                            <td nowrap="nowrap" colspan="2"><a id="A2"></a></td>
+                            <td nowrap="nowrap"colspan="2"><a id="A3"></a></td>
+                            <td nowrap="nowrap" colspan="2"><a id="A4"></a></td>-->
+                        </tr>
+                        <tr>
+                            <!-- <th nowrap="nowrap">
+                                Special Inst.
+								<a style="padding-left: 5px;" id="SPLINSTRUCTION"></a>
+                            </th> -->
+                            <td colspan="7" nowrap="nowrap">
+                               <span style="font-size:small ; font-weight:bold;">Special Inst. &nbsp;:</span> 
+                                <a style="padding-left: 5px;" id="SPLINSTRUCTION"></a>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
+            <div style="padding-top: 20px;padding-left:15px;padding-right:15px;">
+                <fieldset>
+                    <legend>Frame Details</legend>
+                    <table class="grid">
+                        <tr>
+                            <td style="width:20%">
+                                <a>Code:</a> <a style="padding-left:10px;" id="FRAMECODE"></a>
+                            </td>
+                            <td rowspan="3" style="width:80%;">
+                                <table class="grid">
+                                    <tr>
+                                        <th></th>
+                                        <th>Box A</th>
+                                        <th>Box B</th>
+                                        <th>DBL</th>
+                                        <th>PD</th>
+                                        <th>NPD</th>
+                                        <th>Height</th>
+                                        <th>ED</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            RE
+                                        </td>
+                                        <td nowrap="nowrap" id="REBOXA"></td>
+                                        <td nowrap="nowrap" id="REBOXB"></td>
+                                        <td nowrap="nowrap" id="REDBL"></td>
+                                        <td nowrap="nowrap" id="REPD"></td>
+                                        <td nowrap="nowrap" id="RENPD"></td>
+                                        <td nowrap="nowrap" id="RESEGHEIGHT"></td>
+                                        <td nowrap="nowrap" id="REED"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            LE
+                                        </td>
+										<td nowrap="nowrap" id="LEBOXA"></td>
+                                        <td nowrap="nowrap" id="LEBOXB"></td>
+                                        <td nowrap="nowrap" id="LEDBL"></td>
+                                        <td nowrap="nowrap" id="LEPD"></td>
+                                        <td nowrap="nowrap" id="LENPD"></td>
+                                        <td nowrap="nowrap" id="LESEGHEIGHT"></td>
+                                        <td nowrap="nowrap" id="LEED"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:20%;">
+                                <a>Frame Desc. :</a> <a style="padding-left:10px;" id="FRAMEDESC"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:20%;">
+                                <!--Size:-->
+                            </td>
+                        </tr>
+                        <!--<tr>
+                            <td colspan="2" style="text-align:center;">
+                                <img id="SHAPE" src="../../../../assets/img/mlane.jpg" />
+                            </td>
+
+                        </tr>-->
+                    </table>
+                </fieldset>
+            </div>
+
+
+
+            <!-- end body -->
+        </div>
+        <!-- <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="">
+                                Help
+                            </a>
+                        </li> -->
+                        <!--<li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Help
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Licenses
+                            </a>
+                        </li>-->
+                    <!-- </ul>
+                </nav>
+                <div class="copyright ml-auto">
+                    2021, VisionRx lab 
+                </div>
+            </div>
+        </footer> -->
+
+
+    </div>
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalLabel">Lens Shape</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body" style="text-align:center; width: 100%;">
+                    
+                                <img id="SHAPE" style="width:400px;height: 300px;" src="" />
+                            
+
+                        
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+
+    <!--   Core JS Files   -->
+    <script src="../../static/js/core/jquery.3.2.1.min.js"></script>
+    <script src="../../static/js/core/popper.min.js"></script>
+    <script src="../../static/js/core/bootstrap.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="../../static/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="../../static/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="../../static/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <!-- Atlantis JS -->
+    <script src="../../static/js/atlantis.min.js"></script>
+    <!-- Atlantis DEMO methods, don't include it in your project! -->
+    <script src="../../static/js/setting-demo2.js"></script>
+    <!--anirudha-->
+    <script src="../../static/js/jquery.cookie.js"></script>
+    <!-- <script>
+        var csrftoken = $.cookie('csrftoken');
+
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+    </script> -->
+    <script>
+        $(document).ready(function() {
+    
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            var csrftoken = getCookie('csrftoken');
+            function csrfSafeMethod(method) {
+                // these HTTP methods do not require CSRF protection
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+        });
+        </script>
+    <script>
+        $(document).ready(function () {
+            var data = localStorage.getItem("editdata");
+            // debugger;
+            var postdata = { oci_no: data };
+            $.ajax({
+                url: '/api_cast_oci/',
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    //#orderDate').innerHTML(data.result.Node.ORDERDATE);
+                    document.getElementById("orderDate").innerHTML = data.result.Node.ORDERDATE;
+                    document.getElementById("OCINUMBER").innerHTML = data.result.Node.OCINUMBER;
+                    document.getElementById("CUSTCODE").innerHTML = data.result.Node.CUSTCODE;
+                    document.getElementById("REFNUMBER").innerHTML = data.result.Node.REFNUMBER;
+
+                    document.getElementById("RESPHERE").innerHTML = data.result.Node.RESPHERE;
+                    document.getElementById("RECYLINDER").innerHTML = data.result.Node.RECYLINDER;
+                    document.getElementById("REAXIS").innerHTML = data.result.Node.REAXIS;
+                    document.getElementById("READDITION").innerHTML = data.result.Node.READDITION;
+                    document.getElementById("REPD").innerHTML = data.result.Node.REPD;
+                    document.getElementById("RENPD").innerHTML = data.result.Node.RENPD;
+
+                    document.getElementById("LESPHERE").innerHTML = data.result.Node.LESPHERE;
+                    document.getElementById("LECYLINDER").innerHTML = data.result.Node.LECYLINDER;
+                    document.getElementById("LEAXIS").innerHTML = data.result.Node.LEAXIS;
+                    document.getElementById("LEADDITION").innerHTML = data.result.Node.LEADDITION;
+                    document.getElementById("LEPD").innerHTML = data.result.Node.LEPD;
+                    document.getElementById("LENPD").innerHTML = data.result.Node.LENPD;
+
+
+
+                    document.getElementById("RECODE").innerHTML = data.result.Node.RECODE;
+                    document.getElementById("REDESC").innerHTML = data.result.Node.REDESC;
+
+                    if(data.result.Node.REPRISM1 !=null)
+                        document.getElementById("REPRISM1").innerHTML = data.result.Node.REPRISM1 +"/";
+
+                    document.getElementById("REPRISM1DIA").innerHTML = data.result.Node.REPRISM1DIA;
+
+                    if(data.result.Node.REPRISM2 !=null)
+                    document.getElementById("REPRISM2").innerHTML = data.result.Node.REPRISM2 +"/";
+
+                    document.getElementById("REPRISM2DIA").innerHTML = data.result.Node.REPRISM2DIA;
+                    document.getElementById("RECOMMDIA").innerHTML = data.result.Node.RECOMMDIA;
+
+                    document.getElementById("LECODE").innerHTML = data.result.Node.LECODE;
+                    document.getElementById("LEDESC").innerHTML = data.result.Node.LEDESC;
+
+                    if(data.result.Node.LEPRISM1 !=null)
+                        document.getElementById("LEPRISM1").innerHTML = data.result.Node.LEPRISM1 +"/";
+
+                    document.getElementById("LEPRISM1DIA").innerHTML = data.result.Node.LEPRISM1DIA;
+
+                    if(data.result.Node.LEPRISM2 !=null)
+                    document.getElementById("LEPRISM2").innerHTML = data.result.Node.LEPRISM2 +"/";
+
+                    document.getElementById("LEPRISM2DIA").innerHTML = data.result.Node.LEPRISM2DIA;
+
+                    document.getElementById("LECOMMDIA").innerHTML = data.result.Node.LECOMMDIA;
+
+                    document.getElementById("REREQDIA").innerHTML = data.result.Node.REREQDIA;
+                    document.getElementById("REBASE").innerHTML = data.result.Node.REBASE;
+                    document.getElementById("RECT").innerHTML = data.result.Node.RECT;
+                    document.getElementById("REET").innerHTML = data.result.Node.REET;
+
+                    document.getElementById("LEREQDIA").innerHTML = data.result.Node.LEREQDIA;
+                    document.getElementById("LEBASE").innerHTML = data.result.Node.LEBASE;
+                    document.getElementById("LECT").innerHTML = data.result.Node.LECT;
+                    document.getElementById("LEET").innerHTML = data.result.Node.LEET;
+
+                    // if(data.result.Node.REQTY.trim()="1")
+                    // {
+                    document.getElementById("RECOATINGCOADE").innerHTML = data.result.Node.COATINGCOADE;
+                    document.getElementById("RECOATINGDESC").innerHTML = data.result.Node.COATINGDESC;
+                    document.getElementById("RETINTCOADE").innerHTML = data.result.Node.TINTCOADE;
+                    document.getElementById("RETINTDESC").innerHTML = data.result.Node.TINTDESC;
+                    // }
+
+                    // if(data.result.Node.LEQTY.trim()="1")
+                    // { 
+                    document.getElementById("LECOATINGCOADE").innerHTML = data.result.Node.COATINGCOADE;
+                    document.getElementById("LECOATINGDESC").innerHTML = data.result.Node.COATINGDESC;
+                    document.getElementById("LETINTCOADE").innerHTML = data.result.Node.TINTCOADE;
+                    document.getElementById("LETINTDESC").innerHTML = data.result.Node.TINTDESC;
+                    // }
+
+                    document.getElementById("FRAMECODE").innerHTML = data.result.Node.FRAMECODE;
+                    document.getElementById("FRAMEDESC").innerHTML = data.result.Node.FRAMEDESC;
+                    document.getElementById("REBOXA").innerHTML = data.result.Node.BOXA;
+                    document.getElementById("REBOXB").innerHTML = data.result.Node.BOXB;
+                    document.getElementById("REDBL").innerHTML = data.result.Node.DBL;
+					document.getElementById("LEBOXA").innerHTML = data.result.Node.BOXA;
+                    document.getElementById("LEBOXB").innerHTML = data.result.Node.BOXB;
+                    document.getElementById("LEDBL").innerHTML = data.result.Node.DBL;
+                    document.getElementById("SPLINSTRUCTION").innerHTML = data.result.Node.SPLINSTRUCTION;
+                    document.getElementById("USERNAME_TOP").innerHTML = data.username;
+					document.getElementById("USERNAME").innerHTML = data.username;
+                    document.getElementById("EMAIL").innerHTML = data.email;
+                },
+                data: JSON.stringify(postdata)
+            });
+			// part for shape 8july 2021
+            $.ajax({
+                url: '/ploat_data/',
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    // document.getElementById("SHAPE").innerHTML = data.shape.shape;
+                    var imgsrc64 = "data:image/png;base64," + data.shape.shape;
+                    // alert(imgsrc64.length);
+                    $("#SHAPE").attr("src", imgsrc64);
+                },
+                data: JSON.stringify(postdata)
+            });
+        });
+
+    </script>
+    <script>
+        $('#printST').click(function () {
+    $.ajax({
+        type: 'GET',
+        url: 'print',
+        data: formData,
+        dataType: 'html',
+        success: function (html) {
+            w = window.open("prescription/oci_print/","_blank");
+            w.document.open();
+            w.document.write(html);
+            w.document.close();
+            w.window.print();
+        },
+        error: function (data) {
+            console.log('Error:', data);
+        }
+    });
+});
+    </script>
+</body>
+</html>

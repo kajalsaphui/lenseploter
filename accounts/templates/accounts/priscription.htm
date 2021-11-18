@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Priscription</title>
+    
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+	<!--<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />-->
+	<!--<link rel="icon" href="../../static/img/icon.ico" type="image/x-icon"/>-->
+	
+	<!-- Fonts and icons -->
+	<script src="../../static/js/plugin/webfont/webfont.min.js"></script>
+	<script>
+	    WebFont.load({
+	        google: { "families": ["Lato:300,400,700,900"] },
+	        custom: { "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../../static/css/fonts.min.css'] },
+	        active: function() {
+	            sessionStorage.fonts = true;
+	        }
+	    });
+	</script>
+
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="../../static/css/min.css">
+	<link rel="stylesheet" href="../../static/css/atlantis.min.css">
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link rel="stylesheet" href="../../static/css/demo.css">
+	<link rel="stylesheet" href="../../static/css/style.css">
+	
+	
+    <link href="../../static/css/AdminLTE.min.css" rel="stylesheet">
+    
+</head>
+<body>
+
+   <div class="wrapper">
+      <div class="main-header">
+    <!-- Logo Header -->
+    <div class="logo-header" data-background-color="blue2">
+		
+	    <a href="login.html" class="logo">
+		    <img src="../../static/img/vrxlogo.png" alt="VisionRx lab" style="width:100px;height:50px; padding-top:10px;">
+	    </a>
+	    <div style="padding-top:20px;" class="nav-toggle">
+	    </div>
+    </div>
+		<!-- End Logo Header -->
+
+	    <!-- Navbar Header -->
+	    <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+    		
+		    <div class="container-fluid">
+			    <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+    				
+				    <!-- Profile top left menu-->
+				    <li class="nav-item dropdown hidden-caret">
+					    <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+						    <div class="avatar-sm">
+							    <img src="../../static/img/user.jpg" alt="..." class="avatar-img rounded-circle">
+						    </div>
+					    </a>
+					    <ul class="dropdown-menu dropdown-user animated fadeIn">
+						    <div class="dropdown-user-scroll scrollbar-outer">
+							    <li>
+								    <div class="user-box">
+									    <div class="avatar-lg"><img src="../../static/img/user.jpg" alt="image profile" class="avatar-img rounded"></div>
+									    <div class="u-text">
+										    <h4>Customer name</h4>
+										    <p class="text-muted">hello@example.com</p>
+										    <a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+									    </div>
+								    </div>
+							    </li>
+							    <li>
+								    <!--<div class="dropdown-divider"></div>
+								    <a class="dropdown-item" href="#">My Profile</a>
+								    <a class="dropdown-item" href="#">My Balance</a>
+								    <a class="dropdown-item" href="#">Inbox</a>
+								    <div class="dropdown-divider"></div>
+								    <a class="dropdown-item" href="#">Account Setting</a>-->
+								    <div class="dropdown-divider"></div>
+								    <a class="dropdown-item" href="#">Logout</a>
+							    </li>
+						    </div>
+					    </ul>
+				    </li>
+			    </ul>
+		    </div>
+	    </nav>
+	<!-- End Navbar -->
+    </div>
+        
+       
+			<div class="content">
+				<div class="page-inner">
+				<h4 class="page-title">Tables</h4>	
+			    <!-- body -->
+		        <div class="row" style="font-size:12px;">
+                    <div class="col-md-3">
+                        <div class="box box-primary">
+                            <div class="box-body box-profile" style="height:360px;">
+                                <!--<img class="profile-user-img img-responsive" src="frame1.jpg" alt="Frame 1">-->
+                                <h3 class="profile-username text-center">OCI Number</h3>
+                                <p class="text-muted text-center">EXP/00000/21 <span ng-show="record.lelensmaterial.length>0"></span> </p>
+                                <ul class="list-group list-group-unbordered">
+                                    <li class="list-group-item">
+                                        <div style="width:125px; display: inline-block;"><b>Order Number</b></div> <a>EXP/00000/21</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div style="width:125px; display: inline-block;"><b>Order Date</b></div> <a>21/06/2021</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div style="width:125px; display: inline-block;"><b>Customer Code</b></div> <a>EX/0000021</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div style="width:125px; display: inline-block;"><b>Cust. Reference</b></div> <a>4600154</a>
+                                    </li>
+                                   
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                       <div class="box box-primary">
+                           <div class="col-md-12">
+					            <div class="card">
+						            <div class="card-header">
+							            <h4 class="card-title">Lens & Powers Detail</h4>
+						            </div>
+						            <div class="card-body">
+							            <ul class="nav nav-pills nav-secondary" id="pills-tab" role="tablist">
+								            <li class="nav-item">
+									            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#power-detail" role="tab" aria-controls="power-details" aria-selected="true">Power</a>
+								            </li>
+								            <li class="nav-item">
+											    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#lens-detail" role="tab" aria-controls="pills-contact" aria-selected="false">Lens</a>
+										    </li>
+								            <li class="nav-item">
+									            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#additional-info" role="tab" aria-controls="additional-info" aria-selected="false">Additional Info</a>
+								            </li>
+							            </ul>
+						                <div class="tab-content mt-2 mb-3" id="pills-tabContent">
+								            <div class="tab-pane fade show active" id="power-detail" role="tabpanel" aria-labelledby="pills-home-tab">
+									            <table class="table table-condensed">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Sph</th>
+                                                        <th>Cyl</th>
+                                                        <th>Axis</th>
+                                                        <th>Add</th>
+                                                        <th>PD </th>
+                                                        <th>NPD</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>R</td>
+                                                        <td>-2.00</td>
+                                                        <td>1.00</td>
+                                                        <td>120</td>
+                                                        <td>2.00</td>
+                                                        <td>0.00</td>
+                                                        <td>0.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>L</td>
+                                                        <td>-2.00</td>
+                                                        <td>1.00</td>
+                                                        <td>120</td>
+                                                        <td>2.00</td>
+                                                        <td>0.00</td>
+                                                        <td>0.00</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="tab-pane fade" id="lens-detail" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                                <table class="table table-condensed">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Lens Code</th>
+                                                        <th>Description</th>
+                                                        <th>Base Prism</th>
+                                                        <th>Base Angle</th>
+                                                        <th>Diameter</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>R</td>
+                                                        <td>PLO9808876</td>
+                                                        <td></td>
+                                                        <td>0.00</td>
+                                                        <td>70</td>
+                                                        <td>65</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>L</td>
+                                                        <td>PLO9808876</td>
+                                                        <td></td>
+                                                        <td>0.00</td>
+                                                        <td>70</td>
+                                                        <td>65</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+						                    <div class="tab-pane fade" id="additional-info" role="tabpanel" aria-labelledby="pills-profile-tab">
+							                   <table class="table table-condensed">
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Crib Dia</th>
+                                                        <th>Base Curve</th>
+                                                        <th>CT</th>
+                                                        <th>ET</th>
+                                                        <th>H.Dec</th>
+                                                        <th>V.Dec</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>R</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>L</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                        <td>0</td>
+                                                    </tr>
+                                                </table>
+						                    </div>
+					                    </div>
+					                </div>
+				                </div>
+			                </div>
+			            </div>
+                    </div>
+                </div>
+                <div class="row" style="font-size:12px;">
+                    <div class="col-md-3">
+                        <div class="box box-primary">
+				            <div class="card">
+					            <div class="card-header">
+						            <h4 class="card-title">Services</h4>
+					            </div>
+					            <div class="card-body">
+    					            <ul class="list-group list-group-unbordered">
+                                        <li class="list-group-item">
+                                            <div style="width:125px; display: inline-block;"><b>Coating</b></div> <a>Satin+</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div style="width:125px; display: inline-block;"><b>Coating Desc.</b></div> <a>Satin+</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div style="width:125px; display: inline-block;"><b>Tint</b></div> <a>Gray</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div style="width:125px; display: inline-block;"><b>Tint Desc.</b></div> <a>Gray 10%</a>
+                                        </li>
+                                   
+                                    </ul>
+					            </div>
+				            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-9">
+                       <div class="box box-primary">
+                           <div class="col-md-12">
+					            <div class="card">
+						            <div class="card-header">
+							            <h4 class="card-title">Frame</h4>
+						            </div>
+						            <div class="card-body">
+					                    <table class="table table-condensed">
+                                            <tr>
+                                                <th>Frame Code</th>
+                                                <th>Frame Desc.</th>
+                                                <th>Width</th>
+                                                <th>Height</th>
+                                                <th>DBL</th>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td colspan="3"><img src=""></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="5"><b>Spl. Instruction:</b> <span ng-show="record.lelensmaterial.length>0">Testing by lab</span></td>
+                                            </tr>
+                                        </table>
+						            </div>
+					            </div>
+				            </div>
+			            </div>
+		            </div>
+    		        
+                </div>
+                
+                 <!-- end body -->
+                </div>		
+				
+		    </div>
+			<footer class="footer">
+	        <div class="container-fluid">
+			    <nav class="pull-left">
+				    <ul class="nav">
+						        <li class="nav-item">
+							        <a class="nav-link" href="">
+								        Help
+							        </a>
+						        </li>
+						        <!--<li class="nav-item">
+							        <a class="nav-link" href="#">
+								        Help
+							        </a>
+						        </li>
+						        <li class="nav-item">
+							        <a class="nav-link" href="#">
+								        Licenses
+							        </a>
+						        </li>-->
+					        </ul>
+				 </nav>
+			    <div class="copyright ml-auto">
+			        2021, VisionRx lab <!--<i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>-->
+			    </div>				
+			</div>
+	        </footer>
+		
+	
+   </div>
+       
+   
+	<!--   Core JS Files   -->
+	<script src="../../static/js/core/jquery.3.2.1.min.js"></script>
+	<script src="../../static/js/core/popper.min.js"></script>
+	<script src="../../static/js/core/bootstrap.min.js"></script>
+	<!-- jQuery UI -->
+	<script src="../../static/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="../../static/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	
+	<!-- jQuery Scrollbar -->
+	<script src="../../static/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+	<!-- Atlantis JS -->
+	<script src="../../static/js/atlantis.min.js"></script>
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="../../static/js/setting-demo2.js"></script>
+</body>
+</html>

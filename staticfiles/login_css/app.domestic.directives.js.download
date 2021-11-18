@@ -1,0 +1,321 @@
+﻿'use strict';
+appOnlineOrder.directive('decimalspad', [
+    function () {
+        return {
+            require: 'ngModel',
+            link: function (scope, element, attrs, model) {
+                element.bind('blur', function () {
+                    var decimals = attrs.decimalspad.split(".");
+                    var decimal = parseInt(decimals[0]);
+                    //var value = (isNaN(element.val()) || element.val().length == 0) ? (0).toFixed(decimal) : parseFloat(element.val()).toFixed(decimal);
+                    var value = isNaN(element.val()) || element.val().length === 0 ? "" : parseFloat(element.val()).toFixed(decimal);
+                    var padleft = parseInt(decimals[1]);
+                    if (value !== "") {
+                        value = padLeft(value, padleft);
+                    }
+                    element.val(value);
+                    model.$setViewValue(value);
+                    model.$render();
+                });
+            }
+        };
+    }
+]);
+appOnlineOrder.directive('fileUpload', function () {
+    return {
+        scope: true,        //create a new scope
+        link: function (scope, el, attrs) {
+            el.bind('change', function (event) {
+                var files = event.target.files;
+                //iterate files since 'multiple' may be specified on the element
+                for (var i = 0; i < files.length; i++) {
+                    //emit event upward
+                    scope.$emit("fileSelected", { file: files[i] });
+                }
+            });
+        }
+    };
+});
+appOnlineOrder.directive('pwCheck', [function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, elem, attrs, ctrl) {
+            var firstPassword = '#' + attrs.pwCheck;
+            elem.add(firstPassword).on('keyup', function () {
+                scope.$apply(function () {
+                    var passwordMatched = elem.val() === $(firstPassword).val();
+                    ctrl.$setValidity('pwmatch', passwordMatched);
+                });
+            });
+        }
+    }
+}]);
+
+appOnlineOrder.directive('allowDecimalNumbers', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, elm, attrs, ctrl) {
+            elm.on('keydown', function (event) {
+                var $input = $(this);
+                var value = $input.val();
+                value = value.replace(/[^0-9\.\-]/g, '');
+                var findsDot = new RegExp(/\./g);
+                var containsDot = value.match(findsDot);
+                if (containsDot !== null && ([46, 110, 190].indexOf(event.which) > -1)) {
+                    event.preventDefault();
+                    return false;
+                }
+                $input.val(value);
+                if (event.which === 64 || event.which === 16) {
+                    // numbers  
+                    return false;
+                } if ([8, 9, 13, 27, 37, 38, 39, 40, 110, 109].indexOf(event.which) > -1) {
+                    // backspace, enter, escape, arrows  
+                    return true;
+                } else if (event.which >= 48 && event.which <= 57) {
+                    // numbers  
+                    return true;
+                } else if (event.which >= 96 && event.which <= 105) {
+                    // numpad number  
+                    return true;
+                } else if ([46, 110, 190, 189].indexOf(event.which) > -1) {
+                    // dot and numpad dot and minus symbol 
+                    return true;
+                } else {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+        }
+    };
+});
+
+appOnlineOrder.directive('jqdatepicker', function () {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function (scope, element, attrs, ngModelCtrl) {
+            element.datepicker({
+                dateFormat: 'DD, d  MM, yy',
+                onSelect: function (date) {
+                    scope.date = date;
+                    scope.$apply();
+                }
+            });
+        }
+    };
+});
+
+appOnlineOrder.directive('numbersOnly', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attrs, modelCtrl) {
+            modelCtrl.$parsers.push(function (inputValue) {
+                if (inputValue === undefined) return '';
+                var transformedInput = inputValue.replace(/[^0-9]/g, '');
+                if (transformedInput !== inputValue) {
+                    modelCtrl.$setViewValue(transformedInput);
+                    modelCtrl.$render();
+                }
+
+                return transformedInput;
+            });
+        }
+    };
+});
+
+appOnlineOrder.directive('alphabetOnly', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attrs, modelCtrl) {
+            modelCtrl.$parsers.push(function (inputValue) {
+                if (inputValue === undefined) return '';
+                var transformedInput = inputValue.replace(/[^a-zA-Z ]/g, '');
+                if (transformedInput !== inputValue) {
+                    modelCtrl.$setViewValue(transformedInput);
+                    modelCtrl.$render();
+                }
+
+                return transformedInput;
+            });
+        }
+    };
+});
+
+appOnlineOrder.directive('ageOnly', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attrs, modelCtrl) {
+            modelCtrl.$parsers.push(function (inputValue) {
+                if (inputValue === undefined) return '';
+                var transformedInput = inputValue.replace(/[^0-9.]/g, '');
+                if (transformedInput !== inputValue) {
+                    modelCtrl.$setViewValue(transformedInput);
+                    modelCtrl.$render();
+                }
+
+                return transformedInput;
+            });
+        }
+    };
+});
+appOnlineOrder.directive('dobOnly', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attrs, modelCtrl) {
+            modelCtrl.$parsers.push(function (inputValue) {
+                if (inputValue === undefined) return '';
+                var transformedInput = inputValue.replace(/[^0-9\/]/g, '');
+                if (transformedInput !== inputValue) {
+                    modelCtrl.$setViewValue(transformedInput);
+                    modelCtrl.$render();
+                }
+
+                return transformedInput;
+            });
+        }
+    };
+});
+appOnlineOrder.directive('phoneOnly', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attrs, modelCtrl) {
+            modelCtrl.$parsers.push(function (inputValue) {
+                if (inputValue === undefined) return '';
+                var transformedInput = inputValue.replace(/[^0-9,-]/g, '');
+                if (transformedInput !== inputValue) {
+                    modelCtrl.$setViewValue(transformedInput);
+                    modelCtrl.$render();
+                }
+
+                return transformedInput;
+            });
+        }
+    };
+});
+appOnlineOrder.directive('emitLastRepeaterElement', function () {
+    return function (scope) {
+        if (scope.$last) {
+            scope.$emit('LastRepeaterElement');
+        }
+    };
+});
+appOnlineOrder.directive("whenScrollEnds", function ($parse) {
+    return {
+        restrict: "A",
+        link: function (scope, element, attrs) {
+            var visibleHeight = element.height();
+            var threshold = 650;
+            element.scroll(function () {
+                var scrollableHeight = element.prop('scrollHeight');
+                var hiddenContentHeight = scrollableHeight - visibleHeight;
+                if (hiddenContentHeight - element.scrollTop() <= threshold) {
+                    // Scroll is almost at the bottom. Loading more rows
+                    scope.$apply(attrs.whenScrollEnds);
+                }
+            });
+        }
+    };
+});
+appOnlineOrder.directive('buttonState', function ($state, $rootScope) {
+    return {
+        restrict: 'E',
+        templateUrl: 'template/buttongroup.html',
+        link: function (scope, element, attrs) {
+            if ($state.current.data) {
+                var btState = $state.current.data.buttongroupstate;
+                if (btState) {
+                    if (btState === 'list')
+                        scope.buttonstatemode = 0;
+                    else if (btState === 'view')
+                        scope.buttonstatemode = 1;
+                }
+            }
+        }
+    };
+});
+appOnlineOrder.directive('dateFilter', function ($state, $rootScope) {
+    return {
+        restrict: 'E',
+        templateUrl: 'template/datefilter.html',
+        link: function (scope, element, attrs) {
+            if ($state.current.data) {
+                var showDateFilter = $state.current.data.datefilter;
+                if (showDateFilter)
+                    scope.datefiltermode = true;
+                else if (!showDateFilter)
+                    scope.datefiltermode = false;
+            }
+        }
+    };
+});
+
+
+appOnlineOrder.directive('vrxMin', function () {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function (scope, elem, attr, ctrl) {
+            scope.$watch(attr.vrxMin, function () {
+                ctrl.$setViewValue(ctrl.$viewValue);
+            });
+            var minValidator = function (value) {
+                var min = scope.$eval(attr.vrxMin) || 0;
+                if (!isEmpty(value) && value < min) {
+                    ctrl.$setValidity('vrxMin', false);
+                    return undefined;
+                } else {
+                    ctrl.$setValidity('vrxMin', true);
+                    return value;
+                }
+            };
+
+            ctrl.$parsers.push(minValidator);
+            ctrl.$formatters.push(minValidator);
+        }
+    };
+});
+
+appOnlineOrder.directive('vrxMax', function () {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function (scope, elem, attr, ctrl) {
+            scope.$watch(attr.vrxMax, function () {
+                ctrl.$setViewValue(ctrl.$viewValue);
+            });
+            var maxValidator = function (value) {
+                var max = scope.$eval(attr.vrxMax) || Infinity;
+                if (!isEmpty(value) && value > max) {
+                    ctrl.$setValidity('vrxMax', false);
+                    return undefined;
+                } else {
+                    ctrl.$setValidity('vrxMax', true);
+                    return value;
+                }
+            };
+
+            ctrl.$parsers.push(maxValidator);
+            ctrl.$formatters.push(maxValidator);
+        }
+    };
+});
+
+appOnlineOrder.directive('loading', ['$http', function ($http) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            scope.isLoading = function () {
+                return $http.pendingRequests.length > 0;
+            };
+            scope.$watch(scope.isLoading, function (value) {
+                if (value) {
+                    element.removeClass('ng-hide');
+                }
+                else {
+                    element.addClass('ng-hide');
+                }
+            });
+        }
+    };
+}]);
